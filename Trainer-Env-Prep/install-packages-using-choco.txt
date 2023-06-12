@@ -1,0 +1,23 @@
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+exit
+
+choco install git -y
+
+choco install powershell-core -y
+choco install dotnetfx --pre -y
+choco install -y googlechrome -y
+choco install azure-cosmosdb-emulator -y
+choco install vscode -y
+choco install microsoftazurestorageexplorer -y
+choco install -y microsoft-edge -y
+choco install -y postman -y
+choco install azure-cli -y
+choco install terraform -y
+choco install visualstudio2022community -y
+choco install visualstudio2022-workload-netweb -y
+choco install visualstudio2022-workload-azure -y
+choco install notepadplusplus -y
+choco install 7zip -y
+choco install azcopy -y
+choco install dotnetcore -y
