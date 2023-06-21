@@ -1,0 +1,106 @@
+Set Docker Memory and CPU Limits
+
+Docker best practice:
+
+Limit CPU and memory for your containers to prevent crippling the rest of the containers on the machine.
+
+Examples:
+
+# using docker run
+$ docker run -d -n nginxl$uid --cpus=2 -m 512m nginx
+
+--------------------------------
+Dockerfile - Multiple RUN commands v. single chained RUN command
+
+Docker best practice:
+
+In your Dockerfile, combine commands to minimize the number of layers and therefore reduce the image size.
+
+# 2 commands
+RUN apt-get update
+RUN apt-get install -y netcat
+
+
+# single command
+RUN apt-get update && apt-get install -y netcat
+
+---------------------------------
+
+Which Docker base image should you use?
+
+Docker best practice:
+
+Use smaller base images for your application. *-slim is usually a good choice.
+
+faster building
+faster pushing
+faster pulling
+
+--------------------------------------
+Pay close attention to the order of your Dockerfile commands to leverage layer caching
+
+-----------------------------------------
+Docker multi-stage builds
+
+-----------------------------------------
+From Docker container to a host
+
+docker cp container_name:/tmp/. .
+
+-----------------------------------------
+Scan your container images
+curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o install-scout.sh
+sh install-scout.sh
+docker scout   quickview nginx
+docker scout recommendations nginx
+-----------------------------------------
+Don’t run as root
+RUN useradd -ms /bin/bash ahmed
+USER ahmed
+CMD [“python”, “app.py”]
+
+-----------------------------------------
+Remove all stopped containers
+docker rm $(docker ps -a -q)
+
+-----------------------------------------
+Remove all untagged images
+docker images -q --filter "dangling=true" | xargs docker rmi
+
+-----------------------------------------
+Prune everything
+The docker system prune command is a shortcut that prunes images, containers, and networks.
+
+docker system prune
+docker system prune --volumes
+-----------------------------------------
+Make sure to invalidate image cache when you update images.
+docker build — no-cache=true
+-----------------------------------------
+Keeping your Docker images lightweight
+
+-----------------------------------------
+USE –no-install-recommends ON apt-get install
+
+Adding — no-install-recommends to apt-get install -y can help dramatically reduce  the size by avoiding installing packages that aren’t technically dependencies but are recommended to be installed alongside  packages.
+
+-----------------------------------------
+Merge layers
+docker build --squash
+
+
+-----------------------------------------
+docker save
+docker save IMAGE > /path/to/file.tar
+-----------------------------------------
+The Docker export command is used to save a Docker container to a tar file
+
+docker export CONTAINER > /path/to/file.tar
+-----------------------------------------
+docker load < /tmp/mynewimage.tar
+
+-----------------------------------------
+
+
+-----------------------------------------
+

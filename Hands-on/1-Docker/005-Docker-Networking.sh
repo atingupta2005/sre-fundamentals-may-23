@@ -6,7 +6,7 @@ docker_login_id="atingupta2005"
 docker network ls
 docker run -dit --name alpine1$uid alpine ash
 docker run -dit --name alpine2$uid alpine ash
-docker network inspect bridge
+docker network inspect bridge	- 172.17.0.3, 172.17.0.2
 docker exec -it alpine1$uid sh
 ip addr show
 ping google.com -c 4

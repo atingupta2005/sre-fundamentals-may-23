@@ -1,0 +1,9 @@
+docker pull mcr.microsoft.com/windows/servercore/iis
+docker build -t microsoft-iis .
+docker images
+docker run -d --name m-iis-container microsoft-iis
+
+# Collect IP Address
+docker inspect m-iis-container
+
+# Now open this in browser
