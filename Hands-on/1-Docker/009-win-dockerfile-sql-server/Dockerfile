@@ -1,4 +1,4 @@
-FROM https://hub.docker.com/_/microsoft-windows-servercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
 
 # SQL Server 2016 vNext:
 ENV exe "https://go.microsoft.com/fwlink/?linkid=835677"
