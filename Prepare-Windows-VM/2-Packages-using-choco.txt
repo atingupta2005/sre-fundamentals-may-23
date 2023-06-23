@@ -1,0 +1,49 @@
+Enable the features: - Turn Windows Features On or Off
+ - Windows Subsystem for Linux
+ - Windows Hypervisor Platform
+ - Visrtual Machine Platform
+
+Enable-WindowsOptionalFeature -Online -FeatureName $("Microsoft-Hyper-V", "Containers") -All
+
+Restart-Computer
+
+Enable the features: - Turn Windows Features On or Off
+ - Hyper-V
+
+### Download below plugin using below URL and install it
+https://docs.microsoft.com/windows/wsl/wsl2-kernel
+
+Restart-Computer
+
+# Open Powershell in Administrator mode and run below commands:
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+choco install sql-server-management-studio -y
+choco install vscode -y
+choco install git -y
+#choco uninstall docker-desktop -y
+choco install docker-desktop -y
+Restart-Computer
+
+### Very Important: First make sure you are able to start docker and run below command:
+
+## Now Click on Docker Desktop icon and wait for 2-3 minutes to load it
+
+## Once it is loaded correcty then open powershell and run below commands
+
+docker pull ubuntu
+
+Restart-Computer
+choco install visualstudio2022community -y
+choco install visualstudio2022-workload-netweb -y
+choco install visualstudio2022-workload-azure -y
+
+
+Restart-Computer
+
+# Now swicth to Docker Containers and then run below commands
+docker pull mcr.microsoft.com/windows/servercore:ltsc2022
+docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+docker pull mcr.microsoft.com/windows:ltsc2019
+docker pull mcr.microsoft.com/windows/server:ltsc2022

@@ -1,0 +1,60 @@
+CGYWin
+http://www.cygwin.com/setup-x86_64.exe
+
+Visual Studio
+https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&includeRecommended=true&cid=2030:d8b961812cb24ad0b6ff453a5ce4356f
+
+sql-server-management-studio
+https://download.microsoft.com/download/a/c/a/aca4e29f-6925-4d50-a06b-5576c6ea629f/SSMS-Setup-ENU.exe
+
+Restart-Computer
+
+powershell-core
+https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x64.msi
+
+vscode
+https://az764295.vo.msecnd.net/stable/695af097c7bd098fbf017ce3ac85e09bbc5dda06/VSCodeUserSetup-x64-1.79.2.exe
+
+git
+https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.1/Git-2.41.0-64-bit.exe
+
+Restart-Computer
+
+Enable-WindowsOptionalFeature -Online -FeatureName $("Microsoft-Hyper-V", "Containers") -All
+
+docker-desktop
+## Very Important: Do not start Docker Desktop after installation. First need to restart computer
+https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe
+
+Restart-Computer
+
+If required, enable below features. To enable these features open - "Turn Windows Features On or Off" and make sure these features are fully enabled:
+ - Windows Subsystem for Linux
+ - Windows Hypervisor Platform
+ - Virtual Machine Platform
+
+Restart-Computer
+
+Enable the features: - Turn Windows Features On
+ - Hyper-V
+
+### Download below plugin using below URL and install it
+https://docs.microsoft.com/windows/wsl/wsl2-kernel
+
+Restart-Computer
+
+### Very Important: First make sure you are able to start docker and run below command:
+
+## Now Click on Docker Desktop icon and wait for 2-3 minutes to load it
+
+## Once it is loaded correcty then open powershell and run below commands
+
+docker pull ubuntu
+
+Restart-Computer
+
+# Now swicth to Docker Containers and then run below commands
+docker pull mcr.microsoft.com/windows/servercore:ltsc2022
+docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+docker pull mcr.microsoft.com/windows:ltsc2019
+docker pull mcr.microsoft.com/windows/server:ltsc2022
