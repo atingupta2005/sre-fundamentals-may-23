@@ -1,12 +1,3 @@
-# Azure CLI Login
-az login
-
-# List Subscriptions
-az account list
-
-# Set Specific Subscription (if we have multiple subscriptions)
-az account set --subscription="SUBSCRIPTION_ID"
-
 # get terraform version
 terraform version
 # Terraform v0.13.5
@@ -22,6 +13,14 @@ terraform plan
 
 # deploy terraform infra
 terraform apply
+
+# Terraform Output Commands
+terraform output
+terraform output resource_group_id
+terraform output virtual_network_name
+
+# Generate machine-readable output
+terraform output -json
 
 # destroy infra
 terraform destroy

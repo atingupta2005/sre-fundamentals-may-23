@@ -7,8 +7,6 @@
 - Understand Arguments
 - Understand Identifiers
 - Understand Comments
-- [Terraform Configuration](https://www.terraform.io/docs/configuration/index.html)
-- [Terraform Configuration Syntax](https://www.terraform.io/docs/configuration/syntax.html)
 ```t
 # Template
 <BLOCK TYPE> "<BLOCK LABEL>" "<BLOCK LABEL>"   {
@@ -31,17 +29,3 @@ resource "azurerm_virtual_network" "myvnet" { # Resource BLOCK
 }
 ```
 
-## Step-03: Understand about Arguments, Attributes and Meta-Arguments.
-- Arguments can be `required` or `optional`
-- Attribues format looks like `resource_type.resource_name.attribute_name`
-- [Resource: Azure Resource Group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group)
-- [Resource: Azure Resource Group Argument Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group#arguments-reference)
-- [Resource: Azure Resource Group Attribute Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group#attributes-reference)
-- [Resource: Meta-Arguments](https://www.terraform.io/docs/language/meta-arguments/depends_on.html)
-
-## Step-04: Terraform Top-Level Blocks
-1. Terraform Settings Block
-2. Provider Block
-3. Resource Block
-4. Input Variables Block
-5. Output Values Block

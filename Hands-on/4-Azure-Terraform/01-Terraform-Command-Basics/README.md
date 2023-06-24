@@ -1,9 +1,5 @@
 ## Step-01: Introduction
 
-[![Image](Hands-on/01-Azure/course-images/azure-terraform-workflow-1.png "Terraform on Azure")](Hands-on/01-Azure/course-images/azure-terraform-workflow-1.png)
-
-[![Image](Hands-on/01-Azure/course-images/azure-terraform-workflow-2.png "Terraform on Azure")](Hands-on/01-Azure/course-images/azure-terraform-workflow-2.png)
-
 ## Step-02: Review terraform manifests
 - **Pre-Conditions:** If not done earlier, complete `az login` via Azure CLI. We are going to use Azure CLI Authentication for Terraform when we use Terraform Commands.
 ```t

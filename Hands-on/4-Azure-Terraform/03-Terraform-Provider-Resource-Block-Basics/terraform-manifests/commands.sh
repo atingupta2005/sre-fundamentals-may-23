@@ -8,9 +8,6 @@ terraform
 # init terraform's Azure provider (main.tf)
 terraform init
 
-# display the terraform template
-cat main.tf
-
 # plan and preview terraform changes
 terraform plan
 

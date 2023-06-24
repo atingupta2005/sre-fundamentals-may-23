@@ -50,4 +50,3 @@ output "resource_group_id" {
 output "resource_group_name" {
  value = resource.azurerm_resource_group.my_demo_rg1.name
 }
-
