@@ -1,16 +1,8 @@
-[passwordless]
+[group1]
 127.0.0.1 ansible_port=2150
 127.0.0.2 ansible_port=2250
 
-[password]
+[group2]
 127.0.0.3 ansible_port=2350
 127.0.0.4 ansible_port=2450
 127.0.0.5 ansible_port=2550
-
-[password:vars]
-ansible_ssh_user=user1
-ansible_ssh_pass=user1@123
-
-[all:vars]
-ansible_ssh_user=ansadmin
-ansible_ssh_pass=ansadmin@123
