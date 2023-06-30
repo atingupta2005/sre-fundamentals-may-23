@@ -5,3 +5,4 @@
 [group2]
 127.0.0.3 ansible_port=8023
 127.0.0.4 ansible_port=8024
+#127.0.0.5 ansible_port=8025
