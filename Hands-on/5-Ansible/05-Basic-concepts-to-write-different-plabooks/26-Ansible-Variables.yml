@@ -1,9 +1,9 @@
 ---
-- hosts: localhost
+- hosts: all
   vars:
     x: 23
     my_num: 45.67
-    my_name: Narendra Kumar
+    my_name: Atin Gupta
     my_b: YES
 
   gather_facts: false

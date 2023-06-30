@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   vars:
     x: 34
     #pakgs: ['vim','nano','httpd','nginx']

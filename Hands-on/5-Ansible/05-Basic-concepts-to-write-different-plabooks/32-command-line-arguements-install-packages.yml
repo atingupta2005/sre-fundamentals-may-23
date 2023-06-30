@@ -1,6 +1,6 @@
 ---
 - name: This is a simple playbookto understand command line arguements and install packages
-  hosts: localhost
+  hosts: all
   gather_facts: false
   become: yes
   tasks:

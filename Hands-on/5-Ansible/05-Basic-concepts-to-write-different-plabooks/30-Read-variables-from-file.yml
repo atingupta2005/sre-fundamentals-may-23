@@ -1,5 +1,5 @@
 ---
- - hosts: localhost
+ - hosts: all
    vars_files:
     - variables_values.yml
     - variables_values.json
