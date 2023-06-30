@@ -2,7 +2,7 @@
 127.0.0.1 ansible_port=2150
 127.0.0.2 ansible_port=2250
 
-[group2]
+[web]
 127.0.0.3 ansible_port=2350
 127.0.0.4 ansible_port=2450
 127.0.0.5 ansible_port=2550

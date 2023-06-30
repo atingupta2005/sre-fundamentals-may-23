@@ -60,9 +60,9 @@ ansible group1 -i hosts -a "free -m"
 ansible group1:group2 -i hosts -a "df -h"
  
 # Ansible Adhoc Commands
-ansible groups -m ping
-ansible groups -m shell -a "uptime"
-ansible groups -m shell -a "free -m"
+ansible all -m ping
+ansible all -m shell -a "uptime"
+ansible all -m shell -a "free -m"
 ansible group2:group1 -m shell -a "free -m"
 
 ## Create another inventory file - my_inventory
@@ -72,3 +72,9 @@ ansible -i my_inventory all  -m shell -a "free -m"
 
 ## Playbook: A group of all these commands in a file
 
+
+docker container start $USER-ansible_client_1
+docker container start $USER-ansible_client_2
+docker container start $USER-ansible_client_3
+docker container start $USER-ansible_client_4
+docker container start $USER-ansible_client_5
