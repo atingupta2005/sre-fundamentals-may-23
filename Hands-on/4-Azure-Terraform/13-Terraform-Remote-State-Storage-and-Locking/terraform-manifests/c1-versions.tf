@@ -5,6 +5,7 @@ terraform {
     azurerm = {
       source = "hashicorp/azurerm"
       version = ">= 2.0" 
+	  
     }
     random = {
       source = "hashicorp/random"
@@ -22,5 +23,6 @@ terraform {
 
 # Provider Block
 provider "azurerm" {
+ subscription_id = "580100b9-7996-4288-ac08-12838e04cd5b"
  features {}          
 }

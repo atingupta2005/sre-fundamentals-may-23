@@ -8,6 +8,6 @@ required_providers {
 }
 
 provider "azurerm" {
-  subscription_id = "02cdb919-e534-40c3-9aec-38b0c587cd8d"
+  subscription_id = "6dbee8a4-5e0b-4708-8be6-9e95afc83a78"
   features {}
 }

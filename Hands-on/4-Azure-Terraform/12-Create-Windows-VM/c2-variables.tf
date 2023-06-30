@@ -4,14 +4,16 @@
 variable "business_unit" {
   description = "Business Unit Name"
   type = string
-  default = "it"
+  default = "it-u50"
 }
+
 # 2. Environment Name
 variable "environment" {
   description = "Environment Name"
   type = string
   default = "trng"
 }
+
 # 3. Resource Group Name
 variable "resoure_group_name" {
   description = "Resource Group Name"
@@ -34,7 +36,7 @@ variable "virtual_network_name" {
 
 variable "dns_name_prefix" {
   type = string
-  default = "huola"
+  default = "lpnkqz"
 }
 
 variable "admin_username" {
@@ -58,5 +60,5 @@ variable "storage_account_type" {
 variable "vm_count" {
   description = "How many VMs"
   type = number
-  default = "1"
+  default = "2"
 }
