@@ -34,18 +34,18 @@ docker container inspect $USER-ansible_client_4 | grep IPAddress
 docker container inspect $USER-ansible_client_5 | grep IPAddress
 
 # Deploy Public Key to host
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.2
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.3
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.4
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.5
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.6
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@172.17.0.2
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@172.17.0.3
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@172.17.0.4
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@172.17.0.5
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@172.17.0.6
 
 # Test the key
-ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.2
-ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.3
-ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.4
-ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.5
-ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.6
+ssh -i ~/.ssh/demo_id_rsa ansadmin@172.17.0.2
+ssh -i ~/.ssh/demo_id_rsa ansadmin@172.17.0.3
+ssh -i ~/.ssh/demo_id_rsa ansadmin@172.17.0.4
+ssh -i ~/.ssh/demo_id_rsa ansadmin@172.17.0.5
+ssh -i ~/.ssh/demo_id_rsa ansadmin@172.17.0.6
 
 # Test Ansible is able to conenct to all hosts
 ansible all -i hosts -m ping
