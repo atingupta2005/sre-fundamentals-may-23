@@ -7,32 +7,45 @@ sudo apt install ansible
 
 # ssh-keygen
 ssh-keygen -f ~/.ssh/demo_id_rsa
+ls -al  ~/.ssh/
 chmod 0600 ~/.ssh/demo_id_rsa
- 
+
 # Update Hosts: - hosts
 
 # Update SSH Key File Path:
 
+uid=${USER:1:10}
+echo $uid
+echo 22$uid
+
 # Create Docker containers
-docker run --name $USER-ansible_client_1 -itd -p 8021:22 atingupta2005/ubuntu_ssh_ssh_enabled
-docker run --name $USER-ansible_client_2 -itd -p 8022:22 atingupta2005/ubuntu_ssh_ssh_enabled
-docker run --name $USER-ansible_client_3 -itd -p 8023:22 atingupta2005/ubuntu_ssh_ssh_enabled
-docker run --name $USER-ansible_client_4 -itd -p 8024:22 atingupta2005/ubuntu_ssh_ssh_enabled
-docker run --name $USER-ansible_client_5 -itd -p 8025:22 atingupta2005/ubuntu_ssh_ssh_enabled
+docker container ls
+docker container rm -f $USER-ansible_client_1 $USER-ansible_client_2 $USER-ansible_client_3 $USER-ansible_client_4 $USER-ansible_client_5
+docker run --name $USER-ansible_client_1 -itd -p 21$uid:22 atingupta2005/ubuntu_ssh_ssh_enabled
+docker run --name $USER-ansible_client_2 -itd -p 22$uid:22 atingupta2005/ubuntu_ssh_ssh_enabled
+docker run --name $USER-ansible_client_3 -itd -p 23$uid:22 atingupta2005/ubuntu_ssh_ssh_enabled
+docker run --name $USER-ansible_client_4 -itd -p 24$uid:22 atingupta2005/ubuntu_ssh_ssh_enabled
+docker run --name $USER-ansible_client_5 -itd -p 25$uid:22 atingupta2005/ubuntu_ssh_ssh_enabled
+docker container ls
+docker container inspect $USER-ansible_client_1 | grep IPAddress
+docker container inspect $USER-ansible_client_2 | grep IPAddress
+docker container inspect $USER-ansible_client_3 | grep IPAddress
+docker container inspect $USER-ansible_client_4 | grep IPAddress
+docker container inspect $USER-ansible_client_5 | grep IPAddress
 
 # Deploy Public Key to host
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@$USER-$USER-ansible_client_1
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@$USER-ansible_client_2
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@$USER-ansible_client_3
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@$USER-ansible_client_4
-ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@$USER-ansible_client_5
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.2
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.3
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.4
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.5
+ssh-copy-id -i ~/.ssh/demo_id_rsa.pub demouser@172.17.0.6
 
 # Test the key
-ssh -i ~/.ssh/demo_id_rsa demouser@$USER-$USER-ansible_client_1
-ssh -i ~/.ssh/demo_id_rsa demouser@$USER-ansible_client_2
-ssh -i ~/.ssh/demo_id_rsa demouser@$USER-ansible_client_3
-ssh -i ~/.ssh/demo_id_rsa demouser@$USER-ansible_client_4
-ssh -i ~/.ssh/demo_id_rsa demouser@$USER-ansible_client_5
+ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.2
+ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.3
+ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.4
+ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.5
+ssh -i ~/.ssh/demo_id_rsa demouser@172.17.0.6
 
 # Test Ansible is able to conenct to all hosts
 ansible all -i hosts -m ping
