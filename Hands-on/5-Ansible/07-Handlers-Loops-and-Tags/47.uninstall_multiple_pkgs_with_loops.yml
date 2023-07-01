@@ -1,0 +1,16 @@
+---
+  - hosts: all
+    gather_facts: false
+    become: yes
+    tasks:
+      - apt:
+         name: "{{item}}"
+         state: absent
+        loop:
+          - git
+          - vim
+          - nano
+          - nginx
+          - tree
+
+         

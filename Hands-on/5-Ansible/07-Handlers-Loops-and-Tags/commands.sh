@@ -2,42 +2,27 @@
 bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
 bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
 
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/05-Plabooks-concepts
+cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/07-Handlers-Loops-and-Tags
 
-ansible-playbook 23-Print-any-message-using-playbook.yml
-ansible-playbook 24-Print-Variable-Value.yml
-ansible-playbook 25-Verbosity-Debug.yml       # Second task will skip
-ansible-playbook 25-Verbosity-Debug.yml -v    # Second task will skip
-ansible-playbook 25-Verbosity-Debug.yml -vv
-ansible-playbook 26-Ansible-Variables.yml
-ansible-playbook 27-data_structures.yml
-ansible-playbook 29-Read-and-print-a-variable.yml
-ansible-playbook 30-Read-variables-from-file.yml
+ansible-playbook 45.concepts_of_handlers.yml
+ansible-playbook 46.install_multiple_pkgs_without_loops.yml
+ansible-playbook 47.uninstall_multiple_pkgs_with_loops.yml
 
+# How to list all tags ?
+ansible-playbook 48.tags.yml --list-tags
 
-## Working-with-command-line-arguements
+## Ansible reserves two tag names for special behavior: always and never
+## If you assign the always tag to a task or play, Ansible will 
+## always run that task or play, unless you specifically skip it (--skip-tags always).
+## If you assign the never tag to a task or play, Ansible will skip
+## that task or play unless you specifically request it (--tags never).
 
-## Will throw error
-ansible-playbook 31-Working-with-command-line-arguements.yml
-
-## Will throw error
-ansible-playbook 31-Working-with-command-line-arguements.yml  -e "x=45"
-
-
-ansible-playbook 31-Working-with-command-line-arguements.yml  --extra-var "{ 'x':  45, 'y': 67 }"
-
-ansible-playbook 31-Working-with-command-line-arguements.yml  --extra-var "@variables_values.yml"
-
-
-## Command-line-arguements-install-packages
-ansible-playbook  32-command-line-arguements-install-packages.yml -e "pkg=nginx req_state=present"
-ansible-playbook  32-command-line-arguements-install-packages.yml -e "pkg=nginx req_state=absent"
-
-ansible-playbook 33-without-facts.yml
-
-# Variables related to remote systems are called facts
-ansible-playbook 33-working-with-gather-facts.yml
-
-# Variables related to Ansible are called magic variables.
-ansible-playbook 34-hostvars-inventory-hostname.yml
-
+ansible-playbook 48.tags.yml
+ansible-playbook 48.tags.yml --tags first
+ansible-playbook 48.tags.yml --tags first,second
+ansible-playbook 48.tags.yml --tags first,second,third
+ansible-playbook 48.tags.yml --tags fifth
+ansible-playbook 48.tags.yml --tags fifth --skip-tags third
+ansible-playbook 48.tags.yml --tags fifth --skip-tags common
+ansible-playbook 48.tags.yml --tags fifth,common
+ansible-playbook 48.tags.yml --tags never

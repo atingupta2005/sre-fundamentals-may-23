@@ -1,5 +1,5 @@
 ---
-  - hosts: localhost
+  - hosts: all
     gather_facts: false
     tasks:
       - command: "ls /home"
@@ -10,4 +10,4 @@
         register: out
       - fail:
           msg: "Failed because rc is 0"
-        when: out.rc==0
+        when: out.rc!=0

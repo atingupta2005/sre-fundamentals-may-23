@@ -1,20 +1,20 @@
 ---
-  - hosts: localhost
+  - hosts: all
     gather_facts: false
     become: yes
     tasks:
-      - yum:
-         name: gettext-devel
+      - apt:
+         name: git
          state: present
-      - yum:
-         name: openssl-devel
+      - apt:
+         name: vim
          state: present
-      - yum:
-         name: perl-CPAN
+      - apt:
+         name: nano
          state: present
-      - yum:
-         name: perl-devel
+      - apt:
+         name: nginx
          state: present
-      - yum:
-         name: zlib-devel
+      - apt:
+         name: ranger
          state: present

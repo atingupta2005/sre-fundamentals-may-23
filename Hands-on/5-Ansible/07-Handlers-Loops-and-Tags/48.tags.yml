@@ -1,6 +1,6 @@
 ---
   - name: Play with 5 tasks
-    hosts: localhost
+    hosts: all
     gather_facts: false
     tasks:
       - debug:

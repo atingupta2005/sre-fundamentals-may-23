@@ -1,5 +1,5 @@
 ---
-  - hosts: localhost
+  - hosts: all
     gather_facts: false
     become: yes
     tasks:
@@ -7,8 +7,8 @@
         service:
           name: nginx
           state: started
-        ignore_errors: yes
       - name: starting httpd
         service:
           name: httpd
           state: started
+        ignore_errors: yes

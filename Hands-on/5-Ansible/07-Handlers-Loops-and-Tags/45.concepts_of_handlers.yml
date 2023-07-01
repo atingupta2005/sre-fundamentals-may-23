@@ -1,16 +1,14 @@
 ---
-  - hosts: localhost
+  - hosts: all
     gather_facts: false
     become: yes
     tasks:
-      - name: Install httpd
-        yum:
-          name: httpd
+      - name: Install nginx
+        apt:
+          name: nginx
           state: present
         notify:
-          - start httpd
+          - start nginx
     handlers:
-      - name: start httpd
-        service:
-          name: httpd
-          state: started
+      - name: start nginx
+        service: name=nginx state=restarted
