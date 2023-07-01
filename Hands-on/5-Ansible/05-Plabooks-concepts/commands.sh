@@ -1,10 +1,10 @@
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/05-Basic-concepts-to-write-different-plabooks
-
 docker container start $USER-ansible_client_1
 docker container start $USER-ansible_client_2
 docker container start $USER-ansible_client_3
 docker container start $USER-ansible_client_4
 docker container start $USER-ansible_client_5
+
+cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/05-Plabooks-concepts
 
 ansible-playbook 23-Print-any-message-using-playbook.yml
 ansible-playbook 24-Print-Variable-Value.yml

@@ -1,3 +1,5 @@
+cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/01-Install-and-introduction
+
 # Installation:
 sudo apt update
 sudo apt -y install software-properties-common

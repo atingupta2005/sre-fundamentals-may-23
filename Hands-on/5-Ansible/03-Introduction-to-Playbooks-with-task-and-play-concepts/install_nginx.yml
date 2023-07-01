@@ -1,5 +1,0 @@
----
- - hosts: web
-   become: yes
-   tasks:
-   - apt: name=nginx state=present
