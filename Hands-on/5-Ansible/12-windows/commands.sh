@@ -1,0 +1,11 @@
+ansible-playbook 1-win_ping.yml
+ansible-playbook 2-file-windows.yml
+ansible-playbook 3-file_exist_windows.yml
+ansible-playbook 4-win_chocolatey.yml
+ansible-playbook 5-win_copy.yml
+ansible-playbook 7-windows.yml
+ansible-playbook 8-win_file.yml
+ansible-playbook 9-win_get_url.yml
+ansible-playbook 10-directory_exists_windows.yml
+ansible-playbook 11-printdotnet.yml
+ansible-playbook 6-win_reboot.yml

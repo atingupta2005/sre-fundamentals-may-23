@@ -5,7 +5,7 @@
   become: false
   gather_facts: false
   vars:
-    myfile: 'C:\Users\vagrant\Desktop\example.txt'
+    myfile: 'C:\example.txt'
   tasks:
     - name: Creating an empty file
       ansible.windows.win_file:

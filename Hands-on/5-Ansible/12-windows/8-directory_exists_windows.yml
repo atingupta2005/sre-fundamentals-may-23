@@ -3,7 +3,7 @@
 - name: check if is a directory
   hosts: all
   vars:
-    directory: 'C:\Users\vagrant\Desktop\example'
+    directory: 'C:\Users'
   tasks:
     - name: Check the directory
       ansible.windows.win_stat:

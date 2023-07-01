@@ -3,7 +3,7 @@
 - name: check if a file exist
   hosts: all
   vars:
-    myfile: 'C:\Users\vagrant\Desktop\example.txt'
+    myfile: 'C:\example.txt'
   tasks:
     - name: check if a file exist
       ansible.windows.win_stat:

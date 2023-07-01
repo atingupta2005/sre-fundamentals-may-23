@@ -1,0 +1,13 @@
+## Download a file in Windows-like systems
+---
+- name: win_get_url module demo
+  hosts: all
+  become: false
+  vars:
+    myurl: "https://getsamplefiles.com/download/zip/sample-1.zip"
+    mydest: 'C:\example.zip'
+  tasks:
+    - name: download file
+      ansible.windows.win_get_url:
+        url: "{{ myurl }}"
+        dest: "{{ mydest }}"
