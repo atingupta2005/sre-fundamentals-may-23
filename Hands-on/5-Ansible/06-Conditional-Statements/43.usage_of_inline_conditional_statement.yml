@@ -1,6 +1,6 @@
 ---
   - name: simple usage of inline conditional statement ( if else)
-    hosts: localhost
+    hosts: all
     gather_facts: false
     vars:
       x: 155
