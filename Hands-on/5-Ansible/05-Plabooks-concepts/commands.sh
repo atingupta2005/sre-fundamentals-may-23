@@ -1,8 +1,6 @@
-docker container start $USER-ansible_client_1
-docker container start $USER-ansible_client_2
-docker container start $USER-ansible_client_3
-docker container start $USER-ansible_client_4
-docker container start $USER-ansible_client_5
+# Create Docker containers
+bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
 
 cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/05-Plabooks-concepts
 
@@ -13,16 +11,21 @@ ansible-playbook 25-Verbosity-Debug.yml -v    # Second task will skip
 ansible-playbook 25-Verbosity-Debug.yml -vv
 ansible-playbook 26-Ansible-Variables.yml
 ansible-playbook 27-data_structures.yml
-ansible-playbook 28-register_set_facts.yml
 ansible-playbook 29-Read-and-print-a-variable.yml
 ansible-playbook 30-Read-variables-from-file.yml
 
 
 ## Working-with-command-line-arguements
+
+## Will throw error
 ansible-playbook 31-Working-with-command-line-arguements.yml
+
+## Will throw error
 ansible-playbook 31-Working-with-command-line-arguements.yml  -e "x=45"
+
+
 ansible-playbook 31-Working-with-command-line-arguements.yml  --extra-var "{ 'x':  45, 'y': 67 }"
-ansible-playbook 31-Working-with-command-line-arguements.yml  --extra-var "{ 'x':  45, 'y': {'one': 1, 'two': 2, 'three': 3} }"
+
 ansible-playbook 31-Working-with-command-line-arguements.yml  --extra-var "@variables_values.yml"
 
 
@@ -32,7 +35,9 @@ ansible-playbook  32-command-line-arguements-install-packages.yml -e "pkg=nginx 
 
 ansible-playbook 33-without-facts.yml
 
+# Variables related to remote systems are called facts
 ansible-playbook 33-working-with-gather-facts.yml
 
+# Variables related to Ansible are called magic variables.
 ansible-playbook 34-hostvars-inventory-hostname.yml
 

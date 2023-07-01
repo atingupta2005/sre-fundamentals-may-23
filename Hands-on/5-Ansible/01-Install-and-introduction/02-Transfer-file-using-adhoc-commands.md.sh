@@ -1,8 +1,6 @@
-docker container start $USER-ansible_client_1
-docker container start $USER-ansible_client_2
-docker container start $USER-ansible_client_3
-docker container start $USER-ansible_client_4
-docker container start $USER-ansible_client_5
+# Create Docker containers
+bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
 
 cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/01-Install-and-introduction
 
@@ -29,3 +27,4 @@ docker container exec $USER-ansible_client_2 ls /tmp
 docker container exec $USER-ansible_client_3 ls /tmp
 docker container exec $USER-ansible_client_4 ls /tmp
 docker container exec $USER-ansible_client_5 ls /tmp
+

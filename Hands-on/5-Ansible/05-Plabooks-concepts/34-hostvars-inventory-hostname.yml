@@ -4,6 +4,6 @@
   tasks:
     - debug: var=inventory_hostname
     - debug: var=hostvars[inventory_hostname]
-# Need to understand more
+
 # How to run
 # ansible-playbook 34.hostvars-inventory-hostname.yml

@@ -2,7 +2,7 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: FInding os distribution
+    - name: Finding os distribution
       shell: 'cat /etc/os-release  | awk -F =  ''NR==1 {print $2 }'' | awk ''{print $1}'' | tr ''"'' '' '''
       register: os_dist
     - name: Finding os name

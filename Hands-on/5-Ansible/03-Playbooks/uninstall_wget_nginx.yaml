@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   tasks:
-    - apt: name=wget state=present
+    - apt: name=wget state=absent
     - apt: name=vim state=absent
 - hosts: web
   become: yes

@@ -5,7 +5,7 @@
   become: yes
   tasks:
     - name: working with {{pkg}}
-      yum:
+      apt:
         name: "{{pkg}}"
         state: "{{req_state}}"
 # How to run:
