@@ -6,4 +6,3 @@
   roles:
     - update_repos
     - xyz_java
-    - xyz_tomcat
