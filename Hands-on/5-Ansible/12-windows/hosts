@@ -1,9 +1,0 @@
-[win]
-vmwinrm3.eastus.cloudapp.azure.com
-
-[win:vars]
-ansible_port=5985
-ansible_user=atingupta2005
-ansible_password=Azure@123456
-ansible_connection=winrm
-ansible_winrm_server_cert_validation=ignore

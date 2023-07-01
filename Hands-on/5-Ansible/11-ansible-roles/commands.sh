@@ -38,16 +38,10 @@ cat > roles/xyz_java/tasks/main.yml << EOL
   apt:
     name: "{{req_java}}"
     state: present
-- name: Setting default java
-  alternatives:
-    name: java
-    link: /usr/bin/java
-    path: /usr/lib/jvm/{{set_java}}/bin/java
 EOL
 
 cat > roles/xyz_java/vars/main.yml << EOL
-req_java: java-1.8.0-openjdk
-set_java: jre-1.8.0-openjdk
+req_java: openjdk-8-jdk
 EOL
 
 rm install-java.yml
@@ -65,9 +59,9 @@ EOL
 ansible-playbook install-java.yml
 
 
-docker container exec $USER-ansible_client_1 java --version
-docker container exec $USER-ansible_client_2 java --version
-docker container exec $USER-ansible_client_3 java --version
-docker container exec $USER-ansible_client_4 java --version
-docker container exec $USER-ansible_client_5 java --version
+docker container exec $USER-ansible_client_1 java -version
+docker container exec $USER-ansible_client_2 java -version
+docker container exec $USER-ansible_client_3 java -version
+docker container exec $USER-ansible_client_4 java -version
+docker container exec $USER-ansible_client_5 java -version
 
