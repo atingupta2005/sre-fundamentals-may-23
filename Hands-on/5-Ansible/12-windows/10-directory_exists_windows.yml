@@ -1,0 +1,16 @@
+## Create a directory on Windows-like systems 
+---
+- name: check if is a directory
+  hosts: all
+  vars:
+    directory: 'C:\Users\vagrant\Desktop\example'
+  tasks:
+    - name: Check the directory
+      ansible.windows.win_stat:
+        path: "{{ directory }}"
+      register: dir_data
+
+    - name: Directory found
+      ansible.builtin.debug:
+        msg: "Directory {{ directory }} present"
+      when: dir_data.stat.isdir is defined and dir_data.stat.isdir
