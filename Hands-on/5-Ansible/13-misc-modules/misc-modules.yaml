@@ -1,0 +1,75 @@
+---
+# Crone Module
+- name: Ensure a job that runs at 2 and 5 exists. Creates an entry like "0 5,2 * * ls -alh > /dev/null"
+  ansible.builtin.cron:
+    name: "check dirs"
+    minute: "0"
+    hour: "5,2"
+    job: "ls -alh > /dev/null"
+
+
+# Crone Module
+- name: Creates an entry like "@reboot /some/job.sh"
+  ansible.builtin.cron:
+    name: "a job for reboot"
+    special_time: reboot
+    job: "ls -alh > /dev/null"
+
+# Mount Module
+- name: Mount an NFS volume
+  ansible.posix.mount:
+    src: 192.168.1.100:/nfs/ssd/shared_data
+    path: /mnt/shared_data
+    opts: rw,sync,hard
+    state: mounted
+    fstype: nfs
+
+- name: Unmount a mounted volume
+  ansible.posix.mount:
+    path: /mnt/shared_data
+    state: unmounted
+
+# Group Module
+- name: Ensure group "somegroup" exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+# User Module
+- name: Add the user 'atin' with a bash shell, appending the group 'docker' to the user's groups
+  ansible.builtin.user:
+    name: atin
+    shell: /bin/bash
+    groups: docker
+    append: yes
+
+- name: Remove the user 'atin'
+  ansible.builtin.user:
+    name: atin
+    state: absent
+    remove: yes
+	
+# Mail module
+- name: Example playbook sending mail to root
+  community.general.mail:
+    subject: System {{ ansible_hostname }} has been successfully provisioned.
+  delegate_to: localhost
+  
+# Git module
+- name: Example clone of a single branch
+  ansible.builtin.git:
+    repo: https://github.com/octocat/Hello-World
+    dest: /src/ansible-examples
+    single_branch: yes
+    version: master
+	
+# Package Module
+- name: Install the latest version of Apache and MariaDB
+  ansible.builtin.package:
+    name:
+      - httpd
+      - mariadb-server
+    state: latest
+
+
+

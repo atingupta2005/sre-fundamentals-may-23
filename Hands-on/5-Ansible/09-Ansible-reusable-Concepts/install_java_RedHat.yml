@@ -1,5 +1,5 @@
 ---
- - name: Installing java on RedHat family
-   yum:
+- name: Installing java on RedHat family
+  yum:
     name: java-1.8.0-openjdk
     state: present

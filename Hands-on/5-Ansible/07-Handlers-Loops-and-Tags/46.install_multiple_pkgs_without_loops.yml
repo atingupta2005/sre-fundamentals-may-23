@@ -1,20 +1,20 @@
 ---
-  - hosts: all
-    gather_facts: false
-    become: yes
-    tasks:
-      - apt:
-         name: git
-         state: present
-      - apt:
-         name: vim
-         state: present
-      - apt:
-         name: nano
-         state: present
-      - apt:
-         name: nginx
-         state: present
-      - apt:
-         name: ranger
-         state: present
+- hosts: all
+  gather_facts: false
+  become: yes
+  tasks:
+     - apt:
+          name: git
+          state: present
+     - apt:
+          name: vim
+          state: present
+     - apt:
+          name: nano
+          state: present
+     - apt:
+          name: nginx
+          state: present
+     - apt:
+          name: ranger
+          state: present
