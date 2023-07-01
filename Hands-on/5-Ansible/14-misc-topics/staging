@@ -1,0 +1,54 @@
+# Ungrouped hosts, specify before any group headers:
+
+## localhost
+## 127.0.0.1
+
+# A collection of hosts belonging to the 'webservers' group:
+
+[webservers]
+alpha.example.org
+beta.example.org
+192.168.1.100
+192.168.2.110
+www[001:006].example.com
+10.25.1.56
+10.25.1.57
+
+# A collection of database servers in the 'dbservers' group:
+[dbservers]
+db01.intranet.mydomain.net
+db02.intranet.mydomain.net
+10.25.1.56
+10.25.1.57
+db-[99:101]-node.example.com
+192.168.1.110
+192.168.2.110
+
+[web_dev]
+203.0.113.111
+
+[web_prod]
+203.0.113.112
+
+[db_dev]
+203.0.113.113
+
+[db_prod]
+server_hostname
+
+[webservers:children]
+web_dev
+web_prod
+
+[dbservers:children]
+db_dev
+db_prod
+
+[development:children]
+web_dev
+db_dev
+
+[production:children]
+web_prod
+db_prod
+

@@ -1,0 +1,17 @@
+# Configures the SELinux mode and policy.
+# SELinux is designed to protect against misuse and unauthorized use such as: Unauthorized reading of data and programs. Unauthorized modification of data and
+# SELinux can operate in two global modes: Permissive mode, in which permission denials are logged but not enforced. Enforcing mode, in which permissions denials are both logged and enforced.
+ programs.
+- name: Enable SELinux
+  ansible.posix.selinux:
+    policy: targeted
+    state: enforcing
+
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  ansible.posix.selinux:
+    policy: targeted
+    state: permissive
+
+- name: Disable SELinux
+  ansible.posix.selinux:
+    state: disabled

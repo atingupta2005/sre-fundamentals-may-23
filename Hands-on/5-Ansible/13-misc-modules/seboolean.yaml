@@ -1,0 +1,8 @@
+# Toggles SELinux booleans
+# Refer: https://wiki.centos.org/TipsAndTricks/SelinuxBooleans
+
+- name: Set httpd_can_network_connect flag on and keep it persistent across reboots
+  ansible.posix.seboolean:
+    name: httpd_can_network_connect
+    state: true
+    persistent: true
