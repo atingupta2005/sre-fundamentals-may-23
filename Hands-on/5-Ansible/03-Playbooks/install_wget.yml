@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - apt: name=wget state=present
+    - apt: name=vim state=absent
