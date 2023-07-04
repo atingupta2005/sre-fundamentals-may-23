@@ -6,6 +6,7 @@ cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/07-Handlers-Loops-and-Tags
 
 ansible-playbook 45.concepts_of_handlers.yml
 ansible-playbook 46.install_multiple_pkgs_without_loops.yml
+ansible-playbook 47.install_multiple_pkgs_with_loops.yml
 ansible-playbook 47.uninstall_multiple_pkgs_with_loops.yml
 
 # How to list all tags ?
