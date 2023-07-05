@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: deployment-loadbalancer-service
 spec:
-  type: LoadBalancer # ClusterIp, # NodePort
+  type: NodePort # ClusterIp, # NodePort
   selector:
     app: myapp3
   ports: 
