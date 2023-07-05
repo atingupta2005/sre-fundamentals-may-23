@@ -1,4 +1,4 @@
-cd ~/databricks-k8s-bangalore-mar-23/Hands-On/Kubernetes/03-resource-and-objects/04-03-Deployments-with-YAML/
+cd ~/Hands-on/05-Kubernetes/03-resource-and-objects/04-03-Deployments-with-YAML/
 
 # Deployments with YAML
 # Create Deployment

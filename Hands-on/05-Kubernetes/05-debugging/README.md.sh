@@ -1,10 +1,9 @@
-cd ~/databricks-k8s-bangalore-mar-23/Hands-On/Kubernetes/08-debugging
+cd ~/Hands-on/05-Kubernetes/08-debugging
 
 # Debugging in Kubernetes
 ## Obtaining Information About Your Clusters
 ```
 kubectl cluster-info
-kubectl cluster-info dump     # More detailed info
 ```
 
 ## Getting the Status of Your Node
@@ -12,11 +11,6 @@ kubectl cluster-info dump     # More detailed info
 kubectl get nodes
 ```
 
-
-## Getting the Health Status of Cluster Components
-```
-kubectl get componentstatus
-```
 
 ## Getting Activities in Your Cluster
 #- Viewing all of the events that have taken place on your cluster is another effective way to debug your cluster

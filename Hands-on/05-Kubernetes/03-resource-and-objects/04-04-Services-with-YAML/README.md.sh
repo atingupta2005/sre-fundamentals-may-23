@@ -1,4 +1,4 @@
-cd ~/databricks-k8s-bangalore-mar-23/Hands-On/Kubernetes/03-resource-and-objects/04-04-Services-with-YAML/
+cd ~/Hands-on/05-Kubernetes/03-resource-and-objects/04-04-Services-with-YAML/
 
 # Services with YAML
 
