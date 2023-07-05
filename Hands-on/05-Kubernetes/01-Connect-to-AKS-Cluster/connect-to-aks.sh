@@ -2,7 +2,8 @@ AKS_NAME="akstrng"
 AKS_RG="rgtrngaks"
 mylocation="EASTUS"
 
-az login -u u13@atttrainings.com -p <Password>
+az login -u u13@atttrainings.com -p LsAsXe#651
+
 az account set --subscription "113c97f4-2269-4ed9-8617-6d504b86719c"
 
 #- Connect to AKS (If Required)

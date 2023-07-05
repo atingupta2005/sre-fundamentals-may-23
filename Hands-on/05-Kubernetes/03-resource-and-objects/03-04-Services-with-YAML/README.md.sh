@@ -1,4 +1,4 @@
-cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/03-resource-and-objects/04-04-Services-with-YAML/
+cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/03-resource-and-objects/03-04-Services-with-YAML/
 
 # Services with YAML
 
@@ -18,9 +18,11 @@ kubectl get all
 
 # Get Service IP
 kubectl get svc frontend-nginxapp-loadbalancer-service
+kubectl get nodes -o wide
 
 # Access REST Application
-# SVC_PUB_IP2/hello
+#curl node_ip:port/hello
+curl 20.124.183.28:30769/hello
 
 ### Delete Objects using YAML files in folder
 kubectl delete -f kube-manifests/

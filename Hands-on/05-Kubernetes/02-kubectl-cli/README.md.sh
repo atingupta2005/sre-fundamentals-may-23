@@ -4,17 +4,14 @@ kubectl expose deployment hello-world-rest-api --type=NodePort --port=8080
 kubectl get service
 kubectl get pods
 kubectl scale deployment hello-world-rest-api --replicas=3
-kubectl get pods
-
+kubectl get svc
+kubectl get nodes -o wide
+curl node_ip:port
+#curl 20.124.183.28:30157
+#curl 20.124.183.28:30157/hello-world
 #--------Pods
 #Pod is the smallest deployable unit. Can not have container without Pod. Container lives inside Pod
-kubectl get pods
 kubectl get pods -o wide
-
-# To get details about the artifact
-kubectl explain pods
-
-kubectl get pods
 
 # Get more details of the pod
 kubectl describe pod <pod-name>
@@ -109,9 +106,9 @@ kubectl get service hello-world-rest-api -o yaml > service.yaml
 
 #-------------Playing with Kubernetes Commands - Top Node and Pod
 #Fetches PODS from all namespaces
-kubectl get pods --all-namespaces
+kubectl get pods -A
 
-kubectl get services --all-namespaces
+kubectl get services -A
 
 #To get the utilization details of the nodes
 kubectl top node
@@ -129,3 +126,5 @@ kubectl get ns  #Namespace
 kubectl get nodes
 kubectl get no  #Nodes
 kubectl get po  #Pods
+
+kubectl delete all --all -n ns-$USER

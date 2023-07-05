@@ -1,4 +1,4 @@
-cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/08-debugging
+cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/05-debugging
 
 # Debugging in Kubernetes
 ## Obtaining Information About Your Clusters
@@ -22,23 +22,23 @@ kubectl get events -A
 ## Pod Errors
 ```
 kubectl get pods -A
-kubectl describe pod <pod-name>
+kubectl describe pod pod_name
 ```
 
 
 ## Pod Level Logging
 ```
-kubectl get logs <pod-name>
+kubectl get logs pod_name
 ```
 
 ## Using Exec to Debug
 ```
-kubectl exec -it <pod-name> -- /bin/bash
+kubectl exec -it pod_name -- /bin/bash
 ```
 
 kubectl get service -o wide
 kubectl get pods -A
-kubectl describe svc <service-name>
+kubectl describe svc service_name
 
 kubectl explain pod
 kubectl explain svc

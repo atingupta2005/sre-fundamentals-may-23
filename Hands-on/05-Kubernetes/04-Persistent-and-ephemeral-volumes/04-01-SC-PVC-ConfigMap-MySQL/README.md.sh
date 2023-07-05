@@ -1,4 +1,4 @@
-cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/06-Persistent-and-ephemeral-volumes/05-01-SC-PVC-ConfigMap-MySQL
+cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/04-Persistent-and-ephemeral-volumes/04-01-SC-PVC-ConfigMap-MySQL
 
 # AKS Storage -  Storage Classes, Persistent Volume Claims
 # Create Storage Class
@@ -48,7 +48,8 @@ kubectl get pods
 
 # List pods based on  label name
 kubectl get pods -l app=mysql
-
+kubectl logs -f pod_name
+## "Press CTRL+C to exit"
 
 ## Connect to MySQL Database
 
@@ -70,12 +71,11 @@ kubectl delete -f kube-manifests/
 
 # List PV
 kubectl get pv
-PV_NAME=$(kubectl get pv -o json | jq .items[0].metadata.name)
-PV_NAME2=${PV_NAME//\"}
-echo $PV_NAME2
 
 # Delete PV exclusively
 kubectl delete pv $PV_NAME2
 
 # Delete Azure Disks
 # Go to All Services -> Disks -> Select and Delete the Disk
+
+kubectl get all
