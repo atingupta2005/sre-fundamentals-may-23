@@ -14,10 +14,11 @@ kubectl get pods -o wide
 # To get details about the artifact
 kubectl explain pods
 
+kubectl get pods
+
 # Get more details of the pod
 kubectl describe pod <pod-name>
 
-kubectl get pods
 kubectl delete pod <pod-name>
 kubectl get pods
 
@@ -75,15 +76,7 @@ kubectl set image deployment hello-world-rest-api hello-world-rest-api=atingupta
 kubectl get service
 
 # Lets see the events which occurred. 
-# You will notice that Deployment is regularly updating the replication configuration like:
-# Old:2/New:1
-# Old:1/New:2
-# Old:0/New:3
 kubectl get events --sort-by=.metadata.creationTimestamp
-
-# Summary: Deployment is really useful to make sure that we are able to 
-# update new releases of application without downtime
-# Strategy used by Deployment is called "Rolling Update"
 
 kubectl get pods -o wide
 kubectl get rs

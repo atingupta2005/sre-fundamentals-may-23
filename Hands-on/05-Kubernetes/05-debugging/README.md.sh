@@ -1,4 +1,4 @@
-cd ~/Hands-on/05-Kubernetes/08-debugging
+cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/08-debugging
 
 # Debugging in Kubernetes
 ## Obtaining Information About Your Clusters

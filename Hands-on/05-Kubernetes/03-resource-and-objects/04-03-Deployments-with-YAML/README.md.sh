@@ -1,4 +1,4 @@
-cd ~/Hands-on/05-Kubernetes/03-resource-and-objects/04-03-Deployments-with-YAML/
+cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/03-resource-and-objects/04-03-Deployments-with-YAML/
 
 # Deployments with YAML
 # Create Deployment

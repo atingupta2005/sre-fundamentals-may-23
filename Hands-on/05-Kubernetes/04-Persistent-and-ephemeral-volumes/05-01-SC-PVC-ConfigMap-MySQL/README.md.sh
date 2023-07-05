@@ -1,4 +1,4 @@
-cd ~/Hands-on/05-Kubernetes/06-Persistent-and-ephemeral-volumes/05-01-SC-PVC-ConfigMap-MySQL
+cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/06-Persistent-and-ephemeral-volumes/05-01-SC-PVC-ConfigMap-MySQL
 
 # AKS Storage -  Storage Classes, Persistent Volume Claims
 # Create Storage Class

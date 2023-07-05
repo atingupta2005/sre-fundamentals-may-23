@@ -1,4 +1,4 @@
-cd ~/Hands-on/05-Kubernetes/06-todo-web-app
+cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/06-todo-web-app
 
 # Deploy UserManagement Web Application with MySQL Database
 

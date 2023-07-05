@@ -1,4 +1,4 @@
-cd ~/Hands-on/05-Kubernetes/06-Persistent-and-ephemeral-volumes/05-02-UserMgmt-WebApp-with-MySQLDB/
+cd ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/06-Persistent-and-ephemeral-volumes/05-02-UserMgmt-WebApp-with-MySQLDB/
 
 # Deploy UserManagement Web Application with MySQL Database
 
