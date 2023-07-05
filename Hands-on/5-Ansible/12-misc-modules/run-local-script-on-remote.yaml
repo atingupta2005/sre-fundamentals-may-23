@@ -1,4 +1,6 @@
 # Runs a local script on a remote node after transferring it
 - name: Run a script with arguments (free form)
-  ansible.builtin.script: script.sh
+  hosts: all
+  tasks:
+   - ansible.builtin.script: script.sh
 
