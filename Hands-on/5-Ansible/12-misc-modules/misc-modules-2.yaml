@@ -2,19 +2,26 @@
 # command: executes a remote command on the target host, in the same shell of other playbook's tasks.
 - name: Usage of Debug Module - 1
   hosts: all
+  become: true
   tasks:
-    - name: Return motd to registered var
-      ansible.builtin.command: cat /etc/motd
-      register: mymotd
-      
+    - name: Updating repos
+      apt:
+        name: "*"
+        state: latest
+    - name: Installing python pip
+      apt:
+        name: python3-pip
+        state: present
+    - name: Installing python pip
+      command: pip install pexpect
     # The expect module executes a command and responds to prompts.
     - name: Case insensitive password string match
       ansible.builtin.expect:
-        command: passwd $USER
+        command: passwd
         responses:
           (?i)password: "MySekretPa$$word"
       # you don't want to show passwords in your logs
-      no_log: true
+      #no_log: true
       
     # Raw module
     # Executes a low-down and dirty SSH command, not going through the module subsystem.
@@ -25,7 +32,7 @@
     # supported method.
     
     - name: Bootstrap a host without python2 installed
-      raw: dnf install -y python2 python2-dnf libselinux-python
+      raw: ls -al /
     
     
     #command: More secure
