@@ -1,21 +1,33 @@
 # The command module takes the command name followed by a list of space-delimited arguments.
 # command: executes a remote command on the target host, in the same shell of other playbook's tasks.
-- name: Return motd to registered var
-  ansible.builtin.command: cat /etc/motd
-  register: mymotd
-  
-# The expect module executes a command and responds to prompts.
-- name: Case insensitive password string match
-  ansible.builtin.expect:
-    command: passwd username
-    responses:
-      (?i)password: "MySekretPa$$word"
-  # you don't want to show passwords in your logs
-  no_log: true
-  
-# Raw module
-# Executes a low-down and dirty SSH command, not going through the module subsystem.
-# The raw module is the most stripped down base way to run commands on a remote system and is NOT recommended. It actually executes commands natively on the system and returns standard output back. This module, unlike all others, doesn’t use python on the remote system. This means it could be used on devices like IoT kit or networking devices that don’t have any other supported method.
-- name: Bootstrap a host without python2 installed
-  raw: dnf install -y python2 python2-dnf libselinux-python
-
+- name: Usage of Debug Module - 1
+  hosts: all
+  tasks:
+    - name: Return motd to registered var
+      ansible.builtin.command: cat /etc/motd
+      register: mymotd
+      
+    # The expect module executes a command and responds to prompts.
+    - name: Case insensitive password string match
+      ansible.builtin.expect:
+        command: passwd $USER
+        responses:
+          (?i)password: "MySekretPa$$word"
+      # you don't want to show passwords in your logs
+      no_log: true
+      
+    # Raw module
+    # Executes a low-down and dirty SSH command, not going through the module subsystem.
+    # The raw module is the most stripped down base way to run commands on a remote system and is NOT recommended. 
+    # It actually executes commands natively on the system and returns standard output back. 
+    # This module, unlike all others, doesn’t use python on the remote system. 
+    # This means it could be used on devices like IoT kit or networking devices that don’t have any other 
+    # supported method.
+    
+    - name: Bootstrap a host without python2 installed
+      raw: dnf install -y python2 python2-dnf libselinux-python
+    
+    
+    #command: More secure
+    #shell: Less secure
+    #raw: Used when Python is not in the target machine

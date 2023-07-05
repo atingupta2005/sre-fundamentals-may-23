@@ -8,5 +8,6 @@ ansible-playbook misc-modules-1.yaml
 
 ansible-playbook misc-modules-2.yaml
 ansible-playbook run-local-script-on-remote.yaml
-ansible-playbook seboolean.yaml
 ansible-playbook selinux.yaml
+ansible-playbook seboolean.yaml
+

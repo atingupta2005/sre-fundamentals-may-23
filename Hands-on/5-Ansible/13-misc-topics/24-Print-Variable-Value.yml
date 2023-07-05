@@ -8,6 +8,7 @@
     - name: Printing a variable value using Debug Module - var
       debug:
         var: inventory_hostname
+- name: Usage of Debug Module - 2
   hosts: dbservers
   tasks:
     - name: Printing a variable value using Debug Module - msg
