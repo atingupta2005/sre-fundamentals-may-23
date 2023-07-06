@@ -1,8 +1,15 @@
 [group1]
-127.0.0.1 ansible_port=2150
-127.0.0.2 ansible_port=2250
+#127.0.0.1 ansible_port=2150
+#127.0.0.2 ansible_port=2250
+vmansible1.eastus.cloudapp.azure.com
 
-[group2]
-127.0.0.3 ansible_port=2350
-127.0.0.4 ansible_port=2450
-127.0.0.5 ansible_port=2550
+#[group2]
+#127.0.0.3 ansible_port=2350
+#127.0.0.4 ansible_port=2450
+#127.0.0.5 ansible_port=2550
+
+[all:vars]
+ansible_become=yes
+ansible_become_method=sudo
+ansible_become_password=ansadmin@123
+ansible_python_interpreter=/usr/bin/python3

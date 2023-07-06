@@ -5,16 +5,26 @@
 - name: Se Linux
   hosts: all
   tasks:
-  - name: Enable SELinux
-    selinux:
-      policy: targeted
-      state: enforcing
-  
-  - name: Put SELinux in permissive mode, logging actions that would be blocked.
-    selinux:
-      policy: targeted
-      state: permissive
-  
-  - name: Disable SELinux
-    ansible.posix.selinux:
-      state: disabled
+    - name: Updating repos
+      apt:
+        name: "*"
+        state: latest
+    - name: Installing python pip
+      apt:
+        name: python3-pip
+        state: present
+    - name: Installing python selinux
+      command: pip install selinux
+    - name: Enable SELinux
+      selinux:
+        policy: targeted
+        state: enforcing
+    
+    - name: Put SELinux in permissive mode, logging actions that would be blocked.
+      selinux:
+        policy: targeted
+        state: permissive
+    
+    #- name: Disable SELinux
+    #  ansible.posix.selinux:
+    #    state: disabled

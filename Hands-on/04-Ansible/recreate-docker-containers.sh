@@ -12,15 +12,18 @@ docker run --name $USER-ansible_client_5 -itd -p 25$uid:22 atingupta2005/ubuntu_
 
 
 # ssh-keygen
-rm -rf ~/.ssh/demo_id_rsa*
-ssh-keygen -f ~/.ssh/demo_id_rsa -q -N ""
+#rm -rf ~/.ssh/demo_id_rsa*
+#ssh-keygen -f ~/.ssh/demo_id_rsa -q -N ""
 
-chmod 0600 ~/.ssh/demo_id_rsa
+#chmod 0600 ~/.ssh/demo_id_rsa
 
 # Deploy Public Key to host
-sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.1 -p 21$uid
-sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.2 -p 22$uid
-sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.3 -p 23$uid
-sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.4 -p 24$uid
-sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.5 -p 25$uid
+sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.1 -p 21$uid -f
+sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.2 -p 22$uid -f
+sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.3 -p 23$uid -f
+sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.4 -p 24$uid -f
+sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@127.0.0.5 -p 25$uid -f
 
+#sshpass -p ansadmin@123 ssh-copy-id -i ~/.ssh/demo_id_rsa.pub ansadmin@vmansible1.eastus.cloudapp.azure.com -p 22 -f
+#ssh -i ~/.ssh/demo_id_rsa ansadmin@vmansible1.eastus.cloudapp.azure.com
+#exit

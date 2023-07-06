@@ -5,13 +5,14 @@
   become: yes
   tasks:
     - apt: name=git state=present
-    # # Crone Module
-    # - name: Ensure a job that runs at 2 and 5 exists. Creates an entry like "0 5,2 * * ls -alh > /dev/null"
-    #   ansible.builtin.cron:
-    #     name: "check dirs"
-    #     minute: "0"
-    #     hour: "5,2"
-    #     job: "ls -alh > /dev/null"
+    # Crone Module
+    
+    - name: Ensure a job that runs at 2 and 5 exists. Creates an entry like "0 5,2 * * ls -alh > /dev/null"
+      cron:
+       name: "check dirs"
+       minute: "0"
+       hour: "5,2"
+       job: "ls -alh > /dev/null"
 
     # # Crone Module
     # - name: Creates an entry like "@reboot /some/job.sh"
@@ -54,7 +55,7 @@
         state: absent
         remove: yes
 
-    # # Mail module
+    # Mail module
     # - name: Example playbook sending mail to root
     #   community.general.mail:
     #     subject: System {{ ansible_hostname }} has been successfully provisioned.
