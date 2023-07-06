@@ -1,4 +1,4 @@
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/01-Install-and-introduction
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/01-Install-and-introduction
 
 # Installation:
 sudo apt update
@@ -10,8 +10,8 @@ sudo apt install -y ansible
 sudo apt-get install sshpass -y
 
 # Create Docker containers
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/recreate-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/start-docker-containers.sh
 
 uid=${USER:1:10}
 echo $uid
@@ -37,7 +37,7 @@ exit
 ansible all -i hosts -m ping
 
 # Running ad hoc commands
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/01-Install-and-introduction
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/01-Install-and-introduction
 ansible all -i hosts -a uptime
 ansible group1 -i hosts -a "free -m"
 ansible group1:group2 -i hosts -a "df -h"

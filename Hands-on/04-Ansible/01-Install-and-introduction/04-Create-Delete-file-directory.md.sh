@@ -1,8 +1,8 @@
 # Create Docker containers
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/recreate-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/start-docker-containers.sh
 
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/01-Install-and-introduction
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/01-Install-and-introduction
 
 # Create/Delete file or directory using Ansible Ad-hoc commands
 ansible all -m file -a "path=/tmp/hello1-$USER.txt state=touch"

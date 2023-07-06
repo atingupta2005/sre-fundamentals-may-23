@@ -1,8 +1,8 @@
 # Create Docker containers
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/recreate-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/start-docker-containers.sh
 
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/02-Ansible-variables
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/02-Ansible-variables
 
 ansible all -m debug -a "var=inventory_hostname"
 ansible all -m debug -a "msg={{inventory_hostname}}"

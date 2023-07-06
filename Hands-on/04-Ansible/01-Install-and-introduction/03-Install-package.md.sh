@@ -1,8 +1,8 @@
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/01-Install-and-introduction
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/01-Install-and-introduction
 
 # Create Docker containers
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/recreate-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/start-docker-containers.sh
 
 # Install a package like git, httpt, mysql, ngixnx
 ansible all -m apt -a "name=git state=present" -b

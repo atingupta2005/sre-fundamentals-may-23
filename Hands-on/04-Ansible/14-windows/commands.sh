@@ -1,4 +1,4 @@
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/12-windows
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/12-windows
 
 ansible-playbook 1-win_ping.yml
 ansible-playbook 2-file-windows.yml

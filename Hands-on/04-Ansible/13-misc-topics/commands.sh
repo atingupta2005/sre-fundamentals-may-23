@@ -1,4 +1,4 @@
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/14-misc-topics
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/14-misc-topics
 
 # Passing multiple inventory sources
 ansible-playbook 24-Print-Variable-Value.yml -i staging -i production --list-hosts

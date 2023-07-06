@@ -1,8 +1,8 @@
 # Create Docker containers
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/recreate-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/start-docker-containers.sh
 
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/07-Handlers-Loops-and-Tags
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/07-Handlers-Loops-and-Tags
 
 ansible-playbook 45.concepts_of_handlers.yml
 ansible-playbook 46.install_multiple_pkgs_without_loops.yml

@@ -1,8 +1,8 @@
 # Create Docker containers
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/recreate-docker-containers.sh
-bash ~/sre-fundamentals-may-23/Hands-on/5-Ansible/start-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/recreate-docker-containers.sh
+bash ~/sre-fundamentals-may-23/Hands-on/04-Ansible/start-docker-containers.sh
 
-cd ~/sre-fundamentals-may-23/Hands-on/5-Ansible/05-Plabooks-concepts
+cd ~/sre-fundamentals-may-23/Hands-on/04-Ansible/05-Plabooks-concepts
 
 ansible-playbook 23-Print-any-message-using-playbook.yml
 ansible-playbook 24-Print-Variable-Value.yml
