@@ -1,5 +1,8 @@
 #-------Deploy Docker image in Kubernetes
 kubectl create deployment hello-world-rest-api --image=atingupta2005/hello-world-rest-api:0.0.1.RELEASE
+
+#kubectl create deployment mssqlserver --image=atingupta2005/winsqlserver
+
 kubectl expose deployment hello-world-rest-api --type=NodePort --port=8080
 kubectl get service
 kubectl get pods

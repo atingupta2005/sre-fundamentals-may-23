@@ -1,0 +1,8 @@
+When we create Virtual Machine on Azure then make sure that we chose below settings:
+
+Security Type: Standard
+
+Note that by default it is Trusted Launch virtual machines. We need to change it in the last to Standard
+
+Size: D8s_v3
+

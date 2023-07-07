@@ -1,3 +1,13 @@
-docker build -t sqlserver .
-md c:\temp
-docker run -d -p 1433:1433 -v C:/temp/:C:/temp/ -e sa_password=KjIp#mnj123 -e ACCEPT_EULA=Y sqlserver
+cd c:\
+git clone https://github.com/atingupta2005/sre-fundamentals-may-23
+cd c:\sre-fundamentals-may-23\Hands-on\02-Docker\09-win-dockerfile-sql-server
+docker build -t atingupta2005/winsqlserver .
+docker login -u atingupta2005
+docker push atingupta2005/winsqlserver
+docker container stop mysqlserver
+docker container rm mysqlserver
+
+docker run -d -p 1433:1433  -e sa_password=KjIp#mnj123 -e ACCEPT_EULA=Y --name mysqlserver sqlserver
+
+docker logs -f mysqlserver
+docker exec -it mysqlserver powershell
