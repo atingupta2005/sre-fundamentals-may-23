@@ -1,0 +1,24 @@
+# Create ubuntu vm - 22.0.4
+
+sudo apt update
+sudo apt install -y policycoreutils selinux-utils selinux-basics
+sudo selinux-activate
+sudo reboot
+sudo setenforce 0
+getenforce
+
+## To enable enforce mode. Don't run below command else we will be unable to connect to it using SSH
+# sudo selinux-config-permissive
+
+sestatus
+sudo nano /etc/selinux/config
+```
+FROM:
+SELINUX=enforcing
+TO:
+SELINUX=disabled
+```
+
+## Alternatively you can temporarily put SELinux into permissive mode with the following command.
+sudo setenforce 0
+
