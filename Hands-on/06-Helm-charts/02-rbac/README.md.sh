@@ -9,12 +9,14 @@
 
 ## Connect to AKS using AD authentication
 # Configure kubectl
+az logout
+sudo rm -rf ~/.kube
+az login --use-device-code
 az account set --subscription 113c97f4-2269-4ed9-8617-6d504b86719c
 az aks get-credentials --resource-group rgtrngaks --name akstrng --overwrite-existing
-
-sudo apt update
-sudo apt install snapd
-sudo snap install kubelogin
+wget https://github.com/Azure/kubelogin/releases/download/v0.0.30/kubelogin-linux-amd64.zip
+unzip kubelogin-linux-amd64.zip 
+sudo mv bin/linux_amd64/kubelogin /usr/bin/
 
 # View Cluster Information
 kubectl cluster-info
@@ -29,10 +31,14 @@ kubectl get pods -A
 kubectl get all --all-namespaces
 
 # Create Namespaces dev and qa
+kubectl delete namespace dev qa
 kubectl create namespace dev
 kubectl create namespace qa
 
 # Deploy Sample Application by you
+cd ~/sre-fundamentals-may-23/Hands-on/06-Helm-charts/02-rbac
+kubectl delete -f kube-manifests/01-Sample-Application -n dev
+kubectl delete -f kube-manifests/01-Sample-Application -n qa
 kubectl apply -f kube-manifests/01-Sample-Application -n dev
 kubectl apply -f kube-manifests/01-Sample-Application -n qa
 
@@ -45,21 +51,24 @@ kubectl get svc -n qa
 
 ## Create AD Group, Role Assignment and User for Dev
 AKS_CLUSTER_ID=$(az aks show --resource-group rgtrngaks --name akstrng --query id -o tsv)
+az ad group delete -g devaksteam
 DEV_AKS_GROUP_ID=$(az ad group create --display-name devaksteam --mail-nickname devaksteam --query objectId -o tsv)
+
+cat kube-manifests/02-Roles-and-RoleBindings/rolebinding-dev-namespace.yaml | grep "4123d819-9ed6-460b-8321-39f02157536b"
+sed -i "s/4123d819-9ed6-460b-8321-39f02157536b/$DEV_AKS_GROUP_ID/g" kube-manifests/02-Roles-and-RoleBindings/rolebinding-dev-namespace.yaml
+cat kube-manifests/02-Roles-and-RoleBindings/rolebinding-dev-namespace.yaml | grep "4123d819-9ed6-460b-8321-39f02157536b"
+cat kube-manifests/02-Roles-and-RoleBindings/rolebinding-dev-namespace.yaml | grep "$DEV_AKS_GROUP_ID"
 
 # Create Role Assignment 
 az role assignment create --assignee $DEV_AKS_GROUP_ID --role "Azure Kubernetes Service Cluster User Role" --scope $AKS_CLUSTER_ID
 
 # Create Dev User
 az ad user delete --id aksdev1@atttrainings.com
-DEV_AKS_USER_OBJECT_ID=$(az ad user create --display-name "AKS Dev1" --user-principal-name aksdev1@atttrainings.com --password @AKSDemo123  --query id -o tsv)
+DEV_AKS_USER_OBJECT_ID=$(az ad user create --display-name "AKS Dev1" --user-principal-name aksdev1@atttrainings.com --password @AKSDemo123  --query objectId -o tsv)
 echo $DEV_AKS_USER_OBJECT_ID
 
 # Associate Dev User to Dev AKS Group
 az ad group member add --group devaksteam --member-id $DEV_AKS_USER_OBJECT_ID
-
-# As AKS Cluster Admin (--admin)
-az aks get-credentials --resource-group rgtrngaks --name akstrng --admin
 
 # Create Kubernetes Role and Role Binding
 kubectl apply -f kube-manifests/02-Roles-and-RoleBindings
@@ -70,8 +79,12 @@ kubectl get rolebinding -n dev
 
 ## Access Dev Namespace using aksdev1 AD User
 # Overwrite kubectl credentials
-ls C:/Users/atingupta2005/.kube/config
-rm -rf C:/Users/atingupta2005/.kube/config
+sudo ls ~/.kube
+sudo rm -rf ~/.kube
+az logout
+az login -u aksdev1@atttrainings.com -p @AKSDemo123
+az account set --subscription 113c97f4-2269-4ed9-8617-6d504b86719c
+az account show
 az aks get-credentials --resource-group rgtrngaks --name akstrng --overwrite-existing
 
 kubectl get pods -n dev
