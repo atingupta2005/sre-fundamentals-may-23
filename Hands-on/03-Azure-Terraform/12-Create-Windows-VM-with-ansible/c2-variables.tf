@@ -4,7 +4,7 @@
 variable "business_unit" {
   description = "Business Unit Name"
   type = string
-  default = "it-u50"
+  default = "fin-u50"
 }
 
 # 2. Environment Name

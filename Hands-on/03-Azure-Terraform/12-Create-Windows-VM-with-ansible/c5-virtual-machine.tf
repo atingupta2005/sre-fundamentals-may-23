@@ -50,7 +50,9 @@ resource "azurerm_virtual_machine_extension" "vmext" {
 
     protected_settings = <<PROT
     {
-        "script": "${base64encode(file(var.scfile))}"
+        "fileUris": ["https://raw.githubusercontent.com/atingupta2005/sre-fundamentals-may-23/main/Hands-on/03-Azure-Terraform/12-Create-Windows-VM-with-ansible/scripts/configure-winrm.ps1"],
+		"commandToExecute": "powershell -ExecutionPolicy Unrestricted -File configure-winrm.ps1",
+		"managedIdentity" : {}
     }
     PROT
 }
