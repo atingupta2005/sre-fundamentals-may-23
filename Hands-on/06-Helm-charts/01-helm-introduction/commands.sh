@@ -95,3 +95,10 @@ helm uninstall mysql-1688389147
 
 helm ls
 
+# Package Helm Chart
+helm create buildachart
+helm package buildachart
+ll
+helm install example3 buildachart-0.1.0.tgz --set service.type=LoadBalancer
+helm uninstall example3
+

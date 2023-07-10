@@ -18,3 +18,14 @@
 ├── requirements.yaml
 └── values (values for template files)
 ```
+
+## Securing Helm Charts
+- Store the charts in a Git repository.
+- Use helm lint or any other linter you prefer to verify the Helm charts are properly formed
+- Use consistent versioning on your charts
+- There are two different versions you can use: the version of the chart itself (version in the Chart.yaml file) and the version of the application (appVersion).
+- Create test scenarios for your Helm charts to cover your use cases.
+- Use Role-based access control (RBAC) to limit the object's permissions
+- Don't trust the Helm charts blindly, especially third-party ones.
+- Use helm verify to check the digital signatures of the charts you use to make sure you are using the charts you are supposed to.
+- Always try to keep the Helm Charts you use updated
