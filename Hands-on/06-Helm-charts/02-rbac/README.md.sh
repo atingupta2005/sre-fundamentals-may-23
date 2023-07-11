@@ -1,11 +1,11 @@
 # RBAC in Kubernetes
 
 ## First Enable AKS Cluster with AKS-managed Azure Active Directory feature 
-- Create Azure AD Group - k8sadmins
-- Associate a User to this Group
-- Settings -> Cluster Configuration -> Authentication and Authorization -> Azure AD Authentication with Kubernetes RBAC
-- Cluster admin ClusterRoleBinding: k8sadmins
-- Click on Apply
+#- Create Azure AD Group - k8sadmins
+#- Associate a User to this Group
+#- Settings -> Cluster Configuration -> Authentication and Authorization -> Azure AD Authentication with Kubernetes RBAC
+#- Cluster admin ClusterRoleBinding: k8sadmins
+#- Click on Apply
 
 ## Connect to AKS using AD authentication
 # Configure kubectl
@@ -14,9 +14,9 @@ sudo rm -rf ~/.kube
 az login --use-device-code
 az account set --subscription 113c97f4-2269-4ed9-8617-6d504b86719c
 az aks get-credentials --resource-group rgtrngaks --name akstrng --overwrite-existing
-wget https://github.com/Azure/kubelogin/releases/download/v0.0.30/kubelogin-linux-amd64.zip
-unzip kubelogin-linux-amd64.zip 
-sudo mv bin/linux_amd64/kubelogin /usr/bin/
+#wget https://github.com/Azure/kubelogin/releases/download/v0.0.30/kubelogin-linux-amd64.zip
+#unzip kubelogin-linux-amd64.zip 
+#sudo mv bin/linux_amd64/kubelogin /usr/bin/
 
 # View Cluster Information
 kubectl cluster-info
