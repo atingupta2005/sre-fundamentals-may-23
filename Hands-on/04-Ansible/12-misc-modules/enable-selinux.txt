@@ -22,3 +22,5 @@ SELINUX=disabled
 ## Alternatively you can temporarily put SELinux into permissive mode with the following command.
 sudo setenforce 0
 
+# Get value of all selinux variables
+getsebool -a

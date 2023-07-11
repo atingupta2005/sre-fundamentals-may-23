@@ -11,3 +11,5 @@ ansible-playbook run-local-script-on-remote.yaml
 ansible-playbook selinux.yaml
 ansible-playbook seboolean.yaml
 
+# Get value of all selinux variables
+getsebool -a
