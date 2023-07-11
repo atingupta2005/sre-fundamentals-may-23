@@ -30,26 +30,26 @@ kubectl get pods -A
 # List Everything
 kubectl get all --all-namespaces
 
-# Create Namespaces dev and qa
-kubectl delete namespace dev qa
-kubectl create namespace dev
-kubectl create namespace qa
+# Create Namespaces dev-$USER and qa-$USER
+kubectl delete namespace dev-$USER qa-$USER
+kubectl create namespace dev-$USER
+kubectl create namespace qa-$USER
 
 # Deploy Sample Application by you
 cd ~/sre-fundamentals-may-23/Hands-on/06-Helm-charts/02-rbac
-kubectl delete -f kube-manifests/01-Sample-Application -n dev
-kubectl delete -f kube-manifests/01-Sample-Application -n qa
-kubectl apply -f kube-manifests/01-Sample-Application -n dev
-kubectl apply -f kube-manifests/01-Sample-Application -n qa
+kubectl delete -f kube-manifests/01-Sample-Application -n dev-$USER
+kubectl delete -f kube-manifests/01-Sample-Application -n qa-$USER
+kubectl apply -f kube-manifests/01-Sample-Application -n dev-$USER
+kubectl apply -f kube-manifests/01-Sample-Application -n qa-$USER
 
-# Access Dev Application by you
-kubectl get svc -n dev
+# Access dev-$USER Application by you
+kubectl get svc -n dev-$USER
 
-# Access QA Application
-kubectl get svc -n qa
+# Access qa-$USER Application
+kubectl get svc -n qa-$USER
 
 
-## Create AD Group, Role Assignment and User for Dev
+## Create AD Group, Role Assignment and User for dev-$USER
 AKS_CLUSTER_ID=$(az aks show --resource-group rgtrngaks --name akstrng --query id -o tsv)
 az ad group delete -g devaksteam
 DEV_AKS_GROUP_ID=$(az ad group create --display-name devaksteam-$USER --mail-nickname devaksteam-$USER --query objectId -o tsv)
@@ -62,22 +62,22 @@ cat kube-manifests/02-Roles-and-RoleBindings/rolebinding-dev-namespace.yaml | gr
 # Create Role Assignment 
 az role assignment create --assignee $DEV_AKS_GROUP_ID --role "Azure Kubernetes Service Cluster User Role" --scope $AKS_CLUSTER_ID
 
-# Create Dev User
+# Create dev-$USER User
 az ad user delete --id aksdev-$USER@atttrainings.com
 DEV_AKS_USER_OBJECT_ID=$(az ad user create --display-name "AKS Dev1" --user-principal-name aksdev-$USER@atttrainings.com --password @AKSDemo123  --query objectId -o tsv)
 echo $DEV_AKS_USER_OBJECT_ID
 
-# Associate Dev User to Dev AKS Group
+# Associate dev-$USER User to dev-$USER AKS Group
 az ad group member add --group devaksteam-$USER --member-id $DEV_AKS_USER_OBJECT_ID
 
 # Create Kubernetes Role and Role Binding
 kubectl apply -f kube-manifests/02-Roles-and-RoleBindings
 
 # Verify Role and Role Binding
-kubectl get role -n dev
-kubectl get rolebinding -n dev
+kubectl get role -n dev-$USER
+kubectl get rolebinding -n dev-$USER
 
-## Access Dev Namespace using aksdev-$USER AD User
+## Access dev-$USER Namespace using aksdev-$USER AD User
 # Overwrite kubectl credentials
 sudo ls ~/.kube
 sudo rm -rf ~/.kube
@@ -87,10 +87,10 @@ az account set --subscription 113c97f4-2269-4ed9-8617-6d504b86719c
 az account show
 az aks get-credentials --resource-group rgtrngaks --name akstrng --overwrite-existing
 
-kubectl get pods -n dev
-kubectl get svc -n dev
+kubectl get pods -n dev-$USER
+kubectl get svc -n dev-$USER
 
-# List Services from QA Namespace
-kubectl get svc -n qa
-# Forbidden Message should come when we list QA Namespace resources
+# List Services from qa-$USER Namespace
+kubectl get svc -n qa-$USER
+# Forbidden Message should come when we list qa-$USER Namespace resources
 
