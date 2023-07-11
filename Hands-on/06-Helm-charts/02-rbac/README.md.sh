@@ -51,7 +51,7 @@ kubectl get svc -n qa-$USER
 
 ## Create AD Group, Role Assignment and User for dev-$USER
 AKS_CLUSTER_ID=$(az aks show --resource-group rgtrngaks --name akstrng --query id -o tsv)
-az ad group delete -g devaksteam
+az ad group delete -g devaksteam-$USER
 DEV_AKS_GROUP_ID=$(az ad group create --display-name devaksteam-$USER --mail-nickname devaksteam-$USER --query objectId -o tsv)
 
 cat kube-manifests/02-Roles-and-RoleBindings/rolebinding-dev-namespace.yaml | grep "4123d819-9ed6-460b-8321-39f02157536b"
@@ -64,7 +64,7 @@ az role assignment create --assignee $DEV_AKS_GROUP_ID --role "Azure Kubernetes 
 
 # Create dev-$USER User
 az ad user delete --id aksdev-$USER@atttrainings.com
-DEV_AKS_USER_OBJECT_ID=$(az ad user create --display-name "AKS Dev1" --user-principal-name aksdev-$USER@atttrainings.com --password @AKSDemo123  --query objectId -o tsv)
+DEV_AKS_USER_OBJECT_ID=$(az ad user create --display-name "AKS Dev1 $USER" --user-principal-name aksdev-$USER@atttrainings.com --password @AKSDemo123  --query objectId -o tsv)
 echo $DEV_AKS_USER_OBJECT_ID
 
 # Associate dev-$USER User to dev-$USER AKS Group
