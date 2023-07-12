@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    layer: db-layer
+    app: demo-voting
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    layer: db-layer
+    app: demo-voting
+    pod: db
+
