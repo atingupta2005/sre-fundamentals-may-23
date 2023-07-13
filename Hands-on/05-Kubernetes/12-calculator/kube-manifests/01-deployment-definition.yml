@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: calculator-1-deployment
+spec: # Dictionary
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator-1
+  template:  
+    metadata: # Dictionary
+      name: calculator-1-pod
+      labels: # Dictionary
+        app: calculator-1  # Key value pairs
+    spec:
+      containers: # List
+        - name: calculator-1-container
+          image: atingupta2005/calculator_1
+          env:
+          - name: FLASK_SERVER_PORT
+            value: "5000"
+          - name: FLASK_SERVER_ACCEPT_FROM_IPS
+            value: "0.0.0.0"
+          - name: CALC_NUMBER_APP_URL
+            value: "calculator-2-service"
+          - name: CALC_NUMBER_APP_PORT
+            value: "5000"
+          ports: 
+            - containerPort: 5000
+
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: calculator-2-deployment
+spec: # Dictionary
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator-2
+  template:  
+    metadata: # Dictionary
+      name: calculator-2-pod
+      labels: # Dictionary
+        app: calculator-2  # Key value pairs
+    spec:
+      containers: # List
+        - name: calculator-2-container
+          image: atingupta2005/calculator_2
+          env:
+          - name: FLASK_SERVER_PORT
+            value: "5000"
+          - name: FLASK_SERVER_ACCEPT_FROM_IPS
+            value: "0.0.0.0"
+          - name: RANDOM_NUMBER_APP_URL
+            value: "calculator-3-service"
+          - name: RANDOM_NUMBER_APP_PORT
+            value: "5000"
+
+          ports: 
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: calculator-3-deployment
+spec: # Dictionary
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator-3
+  template:  
+    metadata: # Dictionary
+      name: calculator-3-pod
+      labels: # Dictionary
+        app: calculator-3  # Key value pairs
+    spec:
+      containers: # List
+        - name: calculator-3-container
+          image: atingupta2005/calculator_3
+          env:
+          - name: FLASK_SERVER_PORT
+            value: "5000"
+          - name: FLASK_SERVER_ACCEPT_FROM_IPS
+            value: "0.0.0.0"
+          ports: 
+            - containerPort: 5000
