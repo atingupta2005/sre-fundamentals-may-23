@@ -1,21 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment 
 metadata: #Dictionary
-  name: calculator-1-deployment
+  name: calculator-1-deployment-v1
 spec: # Dictionary
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: calculator-1
+      version: v1
   template:  
     metadata: # Dictionary
-      name: calculator-1-pod
+      name: calculator-1-pod-v1
       labels: # Dictionary
         app: calculator-1  # Key value pairs
+        version: v1
     spec:
       containers: # List
-        - name: calculator-1-container
-          image: atingupta2005/calculator_1
+        - name: calculator-1-container-v1
+          image: atingupta2005/calculator_1:v1
+          imagePullPolicy: Always
           env:
           - name: FLASK_SERVER_PORT
             value: "5000"
@@ -27,26 +30,28 @@ spec: # Dictionary
             value: "5000"
           ports: 
             - containerPort: 5000
-
 ---
 apiVersion: apps/v1
 kind: Deployment 
 metadata: #Dictionary
-  name: calculator-2-deployment
+  name: calculator-2-deployment-v1
 spec: # Dictionary
   replicas: 3
   selector:
     matchLabels:
       app: calculator-2
+      version: v1
   template:  
     metadata: # Dictionary
-      name: calculator-2-pod
+      name: calculator-2-pod-v1
       labels: # Dictionary
         app: calculator-2  # Key value pairs
+        version: v1
     spec:
       containers: # List
-        - name: calculator-2-container
-          image: atingupta2005/calculator_2
+        - name: calculator-2-container-v1
+          image: atingupta2005/calculator_2:v1
+          imagePullPolicy: Always
           env:
           - name: FLASK_SERVER_PORT
             value: "5000"
@@ -63,21 +68,24 @@ spec: # Dictionary
 apiVersion: apps/v1
 kind: Deployment 
 metadata: #Dictionary
-  name: calculator-3-deployment
+  name: calculator-3-deployment-v1
 spec: # Dictionary
   replicas: 3
   selector:
     matchLabels:
       app: calculator-3
+      version: v1
   template:  
     metadata: # Dictionary
-      name: calculator-3-pod
+      name: calculator-3-pod-v1
       labels: # Dictionary
         app: calculator-3  # Key value pairs
+        version: v1
     spec:
       containers: # List
-        - name: calculator-3-container
-          image: atingupta2005/calculator_3
+        - name: calculator-3-container-v1
+          image: atingupta2005/calculator_3:v1
+          imagePullPolicy: Always
           env:
           - name: FLASK_SERVER_PORT
             value: "5000"

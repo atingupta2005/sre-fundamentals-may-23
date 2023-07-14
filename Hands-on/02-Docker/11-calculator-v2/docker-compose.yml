@@ -1,0 +1,28 @@
+version '3'
+services
+  calculator_1
+    build .1-calculator
+    restart always
+    ports
+      - 50005000
+    networks
+      - calculatornw
+    env_file
+      - myenv.env
+  calculator_2
+    build .2-calculator
+    restart always
+    networks
+      - calculatornw
+    env_file
+      - myenv.env
+  calculator_3
+    build .3-calculator
+    restart always
+    networks
+      - calculatornw
+    env_file
+      - myenv.env
+
+networks
+  calculatornw

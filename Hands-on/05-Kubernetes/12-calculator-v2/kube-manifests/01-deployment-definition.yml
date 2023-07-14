@@ -1,0 +1,156 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: calculator-1-deployment-v1
+spec: # Dictionary
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-1
+      version: v1
+  template:  
+    metadata: # Dictionary
+      name: calculator-1-pod-v1
+      labels: # Dictionary
+        app: calculator-1  # Key value pairs
+        version: v1
+    spec:
+      containers: # List
+        - name: calculator-1-container-v1
+          image: atingupta2005/calculator_1:v1
+          imagePullPolicy: Always
+          env:
+          - name: FLASK_SERVER_PORT
+            value: "5000"
+          - name: FLASK_SERVER_ACCEPT_FROM_IPS
+            value: "0.0.0.0"
+          - name: CALC_NUMBER_APP_URL
+            value: "calculator-2-service"
+          - name: CALC_NUMBER_APP_PORT
+            value: "5000"
+          ports: 
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: calculator-1-deployment-v2
+spec: # Dictionary
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-1
+      version: v2
+  template:  
+    metadata: # Dictionary
+      name: calculator-1-pod-v2
+      labels: # Dictionary
+        app: calculator-1  # Key value pairs
+        version: v2
+    spec:
+      containers: # List
+        - name: calculator-1-container-v2
+          image: atingupta2005/calculator_1:v2
+          imagePullPolicy: Always
+          env:
+          - name: FLASK_SERVER_PORT
+            value: "5000"
+          - name: FLASK_SERVER_ACCEPT_FROM_IPS
+            value: "0.0.0.0"
+          - name: CALC_NUMBER_APP_URL
+            value: "calculator-2-service"
+          - name: CALC_NUMBER_APP_PORT
+            value: "5000"
+          ports: 
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: calculator-2-deployment-v1
+spec: # Dictionary
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator-2
+      version: v1
+  template:  
+    metadata: # Dictionary
+      name: calculator-2-pod-v1
+      labels: # Dictionary
+        app: calculator-2  # Key value pairs
+        version: v1
+    spec:
+      containers: # List
+        - name: calculator-2-container-v1
+          image: atingupta2005/calculator_2:v1
+          imagePullPolicy: Always
+          env:
+          - name: FLASK_SERVER_PORT
+            value: "5000"
+          - name: FLASK_SERVER_ACCEPT_FROM_IPS
+            value: "0.0.0.0"
+          - name: RANDOM_NUMBER_APP_URL
+            value: "calculator-3-service"
+          - name: RANDOM_NUMBER_APP_PORT
+            value: "5000"
+          ports: 
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: calculator-3-deployment-v1
+spec: # Dictionary
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator-3
+      version: v1
+  template:  
+    metadata: # Dictionary
+      name: calculator-3-pod-v1
+      labels: # Dictionary
+        app: calculator-3  # Key value pairs
+        version: v1
+    spec:
+      containers: # List
+        - name: calculator-3-container-v1
+          image: atingupta2005/calculator_3:v1
+          imagePullPolicy: Always
+          env:
+          - name: FLASK_SERVER_PORT
+            value: "5000"
+          - name: FLASK_SERVER_ACCEPT_FROM_IPS
+            value: "0.0.0.0"
+          ports: 
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: calculator-3-deployment-v2
+spec: # Dictionary
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-3
+      version: v2
+  template:  
+    metadata: # Dictionary
+      name: calculator-3-pod-v2
+      labels: # Dictionary
+        app: calculator-3  # Key value pairs
+        version: v2
+    spec:
+      containers: # List
+        - name: calculator-3-container-v2
+          image: atingupta2005/calculator_3:v2
+          imagePullPolicy: Always
+          env:
+          - name: FLASK_SERVER_PORT
+            value: "5000"
+          - name: FLASK_SERVER_ACCEPT_FROM_IPS
+            value: "0.0.0.0"
+          ports: 
+            - containerPort: 5000
