@@ -207,6 +207,16 @@ python3 pythonClient/prometheus-client.py
 python3 pythonClient/prom-test.py
 ```
 
+```yml prometheus.yml
+  - job_name: "vmubuntu-prometheus-client1-python"
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["vmubuntu-prometheus-client1.eastus.cloudapp.azure.com:8000"]
+```
+
 ## Service Discovery
 ```yml prometheus.yml
   - job_name: "file sd"

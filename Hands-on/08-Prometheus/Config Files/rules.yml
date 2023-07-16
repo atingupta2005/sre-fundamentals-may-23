@@ -1,14 +1,23 @@
 groups:
-- name: AllInstances
-  rules:
-  - alert: InstanceDown
-    # Condition for alerting
-    expr: up == 0
-    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Instance {{ $labels.instance }} down'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
+  - name: AllInstances
+    rules:
+      - alert: InstanceDown
+        # Condition for alerting
+        expr: up == 0
+        for: 1m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: "Instance {{ $labels.instance }} down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute."
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: "critical"
+
+      - alert: PythonPrometheusJobMissing
+        expr: absent(up{job="vmubuntu-prometheus-client1-python"})
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: Prometheus job missing (instance {{ $labels.instance }})
+          description: "A Prometheus job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"

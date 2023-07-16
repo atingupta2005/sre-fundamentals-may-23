@@ -1,4 +1,4 @@
 - targets:
-  - localhost:9100
+    - localhost:9100
   labels:
-    team: "Team Alpha"
+    team: "Team CGI"
