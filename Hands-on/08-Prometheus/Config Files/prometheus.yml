@@ -30,10 +30,6 @@ scrape_configs:
     static_configs:
       - targets: ["vmubuntu-prometheus-client1.eastus.cloudapp.azure.com:8000"]
 
-  - job_name: "pushgateway"
-    static_configs:
-      - targets: ["localhost:9091"]
-
   - job_name: "file sd"
     file_sd_configs:
       - files:
@@ -41,9 +37,3 @@ scrape_configs:
 
 rule_files:
   - "rules.yml"
-
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-            - localhost:9093

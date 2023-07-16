@@ -55,8 +55,9 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.6.0/node_e
 tar -xzvf node_exporter-1.6.0.linux-amd64.tar.gz
 cd node_exporter-1.6.0.linux-amd64
 nohup ./node_exporter &
-sudo apt install stress -y
-stress --cpu 2 --io 4 --vm 4 --vm-bytes 1024M --timeout 7200s
+sudo apt install stress netstress -y
+stress --cpu 8 --io 4 --vm 4 --vm-bytes 4096M --timeout 7200s
+
 ```
 
 ## Exporter for Windows
@@ -204,7 +205,6 @@ pip install prometheus-client
 ### Refer: prometheus-client.py
 ```
 python3 pythonClient/prometheus-client.py
-python3 pythonClient/prom-test.py
 ```
 
 ```yml prometheus.yml
@@ -259,6 +259,12 @@ rule_files:
 - https://samber.github.io/awesome-prometheus-alerts/rules.html
 
 ### Note: Restart the Prometheus server
+
+### Stress utility for windows
+- https://download.sysinternals.com/files/CPUSTRES.zip
+
+### Open below URL to check the alarm status
+- http://vmwin-prometheus.eastus.cloudapp.azure.com:9090/alerts
 
 ## Prometheus Storage
 - Prometheus includes a local on-disk time series database, but also optionally integrates with remote storage systems.
