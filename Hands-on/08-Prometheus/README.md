@@ -1,6 +1,6 @@
 # Prometheus
 
-## Setup:
+## Setup
 ### vmubuntu-prometheus
  - prometheus server running on Ubuntu
  - URL: http://vmubuntu-prometheus.eastus.cloudapp.azure.com:9090/graph
@@ -22,7 +22,7 @@
 
 ## To install for Windows open powershell and run below commands
 ### Connect to vmwin-prometheus
-```
+```bash
 cd c:\
 Invoke-WebRequest -Uri https://github.com/prometheus/prometheus/releases/download/v2.45.0/prometheus-2.45.0.windows-amd64.zip -OutFile c:\prometheus-2.45.0.windows-amd64.zip
 Expand-Archive prometheus-2.45.0.windows-amd64.zip -DestinationPath C:\
@@ -33,7 +33,7 @@ ls
 
 ## To install for Ubuntu run below commands
 ### Connect to vmubuntu-prometheus
-```
+```bash
 sudo apt update
 sudo apt install wget zip unzip tree -y
 cd
@@ -47,7 +47,7 @@ curl localhost:9090
 
 ## Exporter for Linux
 ### Connect to vmubuntu-prometheus-client1
-```
+```bash
 sudo apt update
 sudo apt install wget zip unzip tree -y
 cd
@@ -61,7 +61,7 @@ stress --cpu 2 --io 4 --vm 4 --vm-bytes 1024M --timeout 7200s
 
 ## Exporter for Windows
 ### Connect to vmwin-prometheus-client1
-```
+```powershell
 Invoke-WebRequest -Uri https://github.com/prometheus-community/windows_exporter/releases/download/v0.22.0/windows_exporter-0.22.0-amd64.msi -OutFile c:\windows_exporter-0.22.0-amd64.msi
 Start-Process C:\windows_exporter-0.22.0-amd64.msi
 curl http://localhost:9182/metrics
@@ -69,7 +69,7 @@ curl http://localhost:9182/metrics
 
 ## Binding Ubuntu Prometheus server to the WMI exporter
 ### Connect to vmubuntu-prometheus
-```
+```bash
 cat <<EOT >> ~/prometheus-2.45.0.linux-amd64/prometheus.yml
 
   - job_name: "vmwin-prometheus-client1"
@@ -84,7 +84,7 @@ EOT
 
 ## Binding Ubuntu Prometheus Server to the Ubuntu Exporter
 ### Connect to vmubuntu-prometheus
-```
+```bash
 cat <<EOT >> ~/prometheus-2.45.0.linux-amd64/prometheus.yml
 
   - job_name: "vmubuntu-prometheus-client1"
@@ -103,7 +103,7 @@ EOT
 ## Binding Windows Prometheus server to the WMI exporter
 ### Connect to vmwin-prometheus
 #### Open C:\prometheus-2.45.0.windows-amd64\prometheus.yml in notepad
-```
+```yml prometheus.yml
   - job_name: "vmwin-prometheus-client1"
 
     # metrics_path defaults to '/metrics'
@@ -116,7 +116,7 @@ EOT
 ## Binding Windows Prometheus Server to the Ubuntu Exporter
 ### Connect to vmwin-prometheus
 #### Open C:\prometheus-2.45.0.windows-amd64\prometheus.yml in notepad
-```
+```yml prometheus.yml
   - job_name: "vmubuntu-prometheus-client1"
 
     # metrics_path defaults to '/metrics'
@@ -126,7 +126,8 @@ EOT
       - targets: ["vmubuntu-prometheus-client1.eastus.cloudapp.azure.com:9100"]
 ```
 
-### Restart prometheus
+### Note: *Restart the Prometheus server*
+
 #### Refer to the powershell terminal in which Prometheus service is running
 #### Terminate service by pressing CTRL+C
 #### Run service
@@ -200,18 +201,84 @@ pip install prometheus-client
 ```
 
 ## Pushing Metrics
-- https://github.com/prometheus/client_python#exporting-to-a-pushgateway
-
+### Refer: prometheus-client.py
+```
+python pythonClient/prometheus-client.py
+python pythonClient/prom-test.py
+```
 
 ## Service Discovery
+```yml prometheus.yml
+  - job_name: "file sd"
+    file_sd_configs:
+      - files:
+        - file_sd/*.yml
+```
 
-
-
+```yml file_sd/files.yml
+- targets:
+  - localhost:9100
+  labels:
+    team: "Team Alpha"
+```
 
 ## Setting up Alerts
+```yml rules.yml
+groups:
+- name: AllInstances
+  rules:
+  - alert: InstanceDown
+    # Condition for alerting
+    expr: up == 0
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} down'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+```
 
+```yml prometheus.yml
+rule_files:
+  - "rules.yml"
+```
+
+#### Sample alert rules
+- https://samber.github.io/awesome-prometheus-alerts/rules.html
+
+### Note: Restart the Prometheus server
 
 ## Prometheus Storage
-- https://alexandre-vazquez.com/prometheus-storage-introduction/
-- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
+- Prometheus includes a local on-disk time series database, but also optionally integrates with remote storage systems.
+### Local storage
+- Prometheus's local time series database stores data in a custom, highly efficient format on local storage.
+
+### On-disk layout
+```
+./data
+├── 01BKGV7JBM69T2G1BGBGM6KB12
+│   └── meta.json
+├── 01BKGTZQ1SYQJTR4PB43C8PD98
+│   ├── chunks
+│   │   └── 000001
+│   ├── tombstones
+│   ├── index
+│   └── meta.json
+├── 01BKGTZQ1HHWHV8FBJXW1Y3W0K
+│   └── meta.json
+├── 01BKGV7JC0RY8A6MACW02A2PJD
+│   ├── chunks
+│   │   └── 000001
+│   ├── tombstones
+│   ├── index
+│   └── meta.json
+├── chunks_head
+│   └── 000001
+└── wal
+    ├── 000000002
+    └── checkpoint.00000001
+        └── 00000000
+```
 
