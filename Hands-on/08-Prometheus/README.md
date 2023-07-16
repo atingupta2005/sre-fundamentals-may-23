@@ -203,8 +203,8 @@ pip install prometheus-client
 ## Pushing Metrics
 ### Refer: prometheus-client.py
 ```
-python pythonClient/prometheus-client.py
-python pythonClient/prom-test.py
+python3 pythonClient/prometheus-client.py
+python3 pythonClient/prom-test.py
 ```
 
 ## Service Discovery
