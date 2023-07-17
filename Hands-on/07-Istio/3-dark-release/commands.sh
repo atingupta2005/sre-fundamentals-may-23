@@ -1,3 +1,8 @@
+kubectl delete -f ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/12-calculator-v2/kube-manifests
+kubectl get all
+kubectl apply -f ~/sre-fundamentals-may-23/Hands-on/05-Kubernetes/12-calculator-v2/kube-manifests
+kubectl get all
+
 cd ~/sre-fundamentals-may-23/Hands-on/07-Istio/3-dark-release/
 
 kubectl delete -f .

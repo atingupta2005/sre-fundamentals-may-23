@@ -1,5 +1,4 @@
-cd D:/23-trainings/2-Confirmed/5-SRE-Alchemy/istio/0-setup-istio
-USER="u50"
+cd ~/sre-fundamentals-may-23/Hands-on/07-Istio/0-setup-istio
 
 kubectl get all
 
