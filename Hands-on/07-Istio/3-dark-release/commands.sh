@@ -11,13 +11,18 @@ kubectl apply -f .
 kubectl get all  --all-namespaces | grep gateway
 kubectl get pods  --all-namespaces | grep gateway
 
-kubectl get pods -n istio-system | grep ingress
 kubectl get service/istio-ingressgateway -n istio-system
 
-kubectl logs -f pod/istio-ingressgateway-57988c96c4-xzz6n -n istio-system
+kubectl get pods -n istio-system | grep ingress
+kubectl delete pod istio-ingressgateway-57988c96c4-ddmtr -n istio-system
+kubectl get pods -n istio-system | grep ingress
 
-curl --header "x-my-header: newrelease" http://4.227.229.62/
+kubectl logs -f istio-ingressgateway-57988c96c4-vt7jz -n istio-system
 
-curl http://4.227.229.62/
+kubectl get service/istio-ingressgateway -n istio-system
+
+curl --header "x-my-header: newrelease" http://20.232.115.108/
+
+curl http://20.232.115.108/
 
 kubectl delete -f .

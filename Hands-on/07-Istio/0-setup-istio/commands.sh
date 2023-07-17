@@ -20,4 +20,5 @@ kubectl get svc -n istio-system
 ## Check Kiali in the browser
 kubectl get nodes -o wide
 kubectl get svc kiali -n istio-system
-
+kubectl get all -n istio-system | grep ingress
+kubectl get svc istio-ingressgateway -n istio-system
